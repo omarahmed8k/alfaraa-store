@@ -163,8 +163,10 @@ return [
     'email_not_share' => 'We will never share your email address with a third party.',
     'subscribe' => 'Subscribe',
     'sub_info' => 'Subscribe to the mailing list',
-    'info' => 'Links'
-
-
+    'info' => 'Links',
+    'shopNow' => 'Shop now',
+    "searchBy" => "Search By Item Name Or Serial Number",
+    "showMore" => "Show More",
+    "Catagories" => "Catagories",
 
 ];

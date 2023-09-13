@@ -98,20 +98,19 @@
     /************************************************
      * Product Slider - Style: Default [4 Grid, 1 Row]
      ***********************************************/
-    $('.product-default-slider-4grids-1row').slick({
+    $('.product-default-slider-3grids-1row').slick({
         arrows: true,
         infinite: false,
-        slidesToShow: 4,
+        slidesToShow: 3,
         slidesToScroll: 1,
         rtl:window.lang == 'ar',
-
+        dots: false,
         rows: 1,
         easing: 'ease-out',
         speed: 1000,
         prevArrow: '<button type="button" class="default-slider-arrow default-slider-arrow--left prevArrow"><i class="fa fa-angle-left"></button>',
         nextArrow: '<button type="button"  class="default-slider-arrow default-slider-arrow--right nextArrow"><i class="fa fa-angle-right"></button>',
         responsive: [
-
             {
                 breakpoint: 1200,
                 settings: {
@@ -125,7 +124,7 @@
                 }
             },
             {
-                breakpoint: 575,
+                breakpoint: 768,
                 settings: {
                     slidesToShow: 1,
                 }

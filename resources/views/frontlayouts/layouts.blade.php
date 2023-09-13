@@ -1,4 +1,4 @@
-@php 
+@php
 $info = \App\Models\Info::first();
 @endphp
 <!DOCTYPE html>
@@ -7,13 +7,14 @@ $info = \App\Models\Info::first();
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="SbJJEspZ0PfZS9VtQPkbi4FXIEpfdRupsUUL75nnpgc" />
     <title>@yield('title',$general->title)</title>
     <meta name="description" content="@yield('description',$general->description)">
-    
+
     @yield('meta')
-    
+
     <!-- ::::::::::::::Favicon icon::::::::::::::-->
-    <link rel="shortcut icon" href="{{asset('assetsfront/images/logo/logo.png')}}" type="image/png">
+    <link rel="shortcut icon" href="{{asset('assetsfront/images/favicon.svg')}}" type="image/png">
 
     <!-- ::::::::::::::All CSS Files here :::::::::::::: -->
     <!-- Vendor CSS -->
@@ -33,78 +34,89 @@ $info = \App\Models\Info::first();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700;800&display=swap" rel="stylesheet">
-    
+
     @if(request()->route()->named('veiwhome'))
-        {{--<link rel="stylesheet" href="{{asset('assetsfront/ramadan/particles.css')}}?v=1.02" id="particles-link">--}}
-        {{--<script src="{{asset('assetsfront/ramadan/particles.js')}}?v=1" id="particles-script"></script>--}}
-        {{--<script src="{{asset('assetsfront/ramadan/confetti.js')}}?v=1.01"></script>--}}
+    {{--<link rel="stylesheet" href="{{asset('assetsfront/ramadan/particles.css')}}?v=1.02" id="particles-link">--}}
+    {{--<script src="{{asset('assetsfront/ramadan/particles.js')}}?v=1" id="particles-script"></script>--}}
+    {{--<script src="{{asset('assetsfront/ramadan/confetti.js')}}?v=1.01"></script>--}}
     @endif
-    
+
     {{--
     <!-- Use the minified version files listed below for better performance and remove the files listed above -->
     <!-- <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
     <link rel="stylesheet" href="{{asset('assetsfront/css/plugins/plugins.min.css')}}">
     <link rel="stylesheet" href="{{asset('assetsfront/css/style.min.css')}}"> -->
     --}}
-    
+
     @if( __('main.dir') == 'rtl' )
-        <style>
-            .offcanvas-menu-expand::after {
-                right:auto;
-                left:0;
-            }
-            .sub-menu > li > a:hover {
-                transform: translateX(-10px);
-            }
-            .sub-menu > li > a {
-                text-align: right;
-            }
-            .sub-menu > li > a::after {
-                left: auto;
-                right: 0;
-            }
-            .sub-menu>li>a:hover:after {
-                transform: translate(10px,-50%);
-            }
-            .faq-accordian {
-                text-align: right;
-            }
-            .contact-details-icon {
-                margin-left: 20px;
-            }
-        </style>
-    @endif
-    
     <style>
-        .footer-social > li {
+        .offcanvas-menu-expand::after {
+            right: auto;
+            left: 0;
+        }
+
+        .sub-menu>li>a:hover {
+            transform: translateX(-10px);
+        }
+
+        .sub-menu>li>a {
+            text-align: right;
+        }
+
+        .sub-menu>li>a::after {
+            left: auto;
+            right: 0;
+        }
+
+        .sub-menu>li>a:hover:after {
+            transform: translate(10px, -50%);
+        }
+
+        .faq-accordian {
+            text-align: right;
+        }
+
+        .contact-details-icon {
+            margin-left: 20px;
+        }
+    </style>
+    @endif
+
+    <style>
+        .footer-social>li {
             margin-right: 10px;
         }
-        .footer-social > li:last-child {
+
+        .footer-social>li:last-child {
             margin-right: 10px;
         }
+
         .page-pagination li:last-child {
             margin-right: 15px;
         }
+
         .product-default-link a {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
+
         .product-default-link a:hover {
             color: #ec2029;
             overflow: unset !important;
             white-space: unset !important;
         }
+
         .product-default-img {
             object-fit: contain;
             max-height: 273px;
         }
     </style>
-    
+
     @yield('css')
-    
+
     @if(request()->route()->named('veiwhome'))
-        {{--<style>
+    {{--<style>
         #loader {
           position: fixed;
           width: 100%;
@@ -113,393 +125,266 @@ $info = \App\Models\Info::first();
           overflow: visible;
           /*background: #fff url('https://store.alfaraaonline.com.sa/assetsfront/ramadan/Grand-Opening-Invitation-Instagram-Post.gif') no-repeat center center;*/
           background: #fff url('{{asset("assetsfront/ramadan/Grand-Opening2.png")}}') no-repeat center center;
-        }
-        
-        #loader > button {
-            padding: 15px 10px;
-            background-color: #c40e0e;
-            border-radius: 8px;
-            color: white;
-            font-weight: bolder;
-            font-size: 20px;
-            position: absolute;
-            bottom: 93px;
-            left: 643px;
-        }
-        @media (max-width: 740px) {
-             #loader {
-                background-size: contain;
-                background-attachment: fixed;
-             }
-             
-            #loader > button {
-            font-size: 15px;
-            position: absolute;
-            bottom: 30%;
-            left: 35%;
-             }
-        }
-        </style>--}}
+    }
+
+    #loader > button {
+    padding: 15px 10px;
+    background-color: #c40e0e;
+    border-radius: 8px;
+    color: white;
+    font-weight: bolder;
+    font-size: 20px;
+    position: absolute;
+    bottom: 93px;
+    left: 643px;
+    }
+    @media (max-width: 740px) {
+    #loader {
+    background-size: contain;
+    background-attachment: fixed;
+    }
+
+    #loader > button {
+    font-size: 15px;
+    position: absolute;
+    bottom: 30%;
+    left: 35%;
+    }
+    }
+    </style>--}}
     @endif
 </head>
 
 <body>
-    
-     @if(request()->route()->named('veiwhome'))
-	    {{--<section id="particles-js">
-		<div class="text">
-			<h2>رمضان كريم<br>
-			    <span>كل عام و أنتم بخير </span> 
-			</h2>
-		</div>
-		<div class="mosque"></div>
-	</section>--}}
-	   {{-- <div id="loader">
-	        <button id="start-page">نبدأ على بركة الله</button>
-	    </div>--}}
-	@endif
-	
-	{{--<div id="content" style=" {{ request()->route()->named('veiwhome') ? 'display:none' : '' }}">--}}
     <div id="content">
-        
-    <!-- ...:::: Start Header Section:::... -->
-    <header class="header-section d-lg-block d-none">
-        <!-- Start Header Top Area -->
-        <div class="header-top">
-            <div class="container">
-                <div class="row d-flex justify-content-between align-items-center">
-                    <div class="col-6">
-                        <div class="header-top--left">
-                            <span> @Lang('main.Welcome to our store!')</span>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="header-top--right">
-                            <!-- Start Header Top Menu -->
-                            <ul class="header-user-menu">
-
-
-                                <li class=" animated bounceInDown" aria-labelledby="navbarDropdown2">
-                                <a href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img class="user-sub-menu-in-icon" src="{{asset('assetsfront/images/icon/32.png')}}" alt="" width=25px > English</a>
-
-                                <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}"><img class="user-sub-menu-in-icon" src="{{asset('assetsfront/images/icon/32s.png')}}" alt="" width=25px> العربية</a>
-
-                                    <!-- Header Top Menu's Dropdown -->
-                                    <ul class="user-sub-menu">
-                                        {{--
-                                        <!-- <li>
-                                            <a href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img class="user-sub-menu-in-icon" src="{{asset('assetsfront/images/icon/32.png')}}" alt="" width=25px > English</a>
+        <!-- ...:::: Start Header Section:::... -->
+        <header class="header-section d-lg-block d-none">
+            <!-- Start Bottom Area -->
+            <div class="header-bottom sticky-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <!-- Header Main Menu -->
+                            <div class="main-menu">
+                                <nav>
+                                    <a class="logo" href="{{ route('veiwhome') }}"><img src="{{asset('assetsfront/images/logo/logo-light.svg')}}"></a>
+                                    <ul>
+                                        <li>
+                                            <a class="{{Route::current()->getName() == 'veiwhome' ? 'active main-menu-link' : '' }}" href="{{ route('veiwhome') }}">@Lang('main.Home')</a>
+                                        </li>
+                                        @if(\App\Models\Category::count() > 0)
+                                        <li class="has-dropdown">
+                                            <a class=" main-menu-link {{Route::current()->getName() == 'front-category' ? 'active main-menu-link' : '' }}" href="{{ route('front-category') }}">
+                                                @Lang('main.Categories')
+                                                <i class="fa fa-angle-down" style="margin-{{ __('main.dir') == 'rtl' ? 'right' : 'left' }}: 3px "></i>
+                                            </a>
+                                            <ul class="sub-menu">
+                                                @foreach (\App\Models\Category::all() as $category)
+                                                <li>
+                                                    <a href="{{route('front-show-category',$category->id)}}">{{$category['name_'.app()->getLocale()]}}</a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                        @endif
+                                        <li>
+                                            <a class="{{Route::current()->getName() == 'front-product' ? 'active main-menu-link' : '' }}" href="{{ route('front-product') }}">@Lang('main.Products')</a>
                                         </li>
                                         <li>
+                                            <a class="{{Route::current()->getName() == 'front-faq' ? 'active main-menu-link' : '' }}" href="{{ route('front-faq') }}">@Lang('main.FAQ') </a>
+                                        </li>
+                                        <li>
+                                            <a class="{{Route::current()->getName() == 'front-contact' ? 'active main-menu-link' : '' }}" href="{{route('front-contact')}}">@Lang('main.Contact us')</a>
+                                        </li>
+                                        <li>
+                                            @if(app()->getLocale() == 'ar')
+                                            <a href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img class="user-sub-menu-in-icon" src="{{asset('assetsfront/images/icon/32.png')}}" alt="" width=25px> English</a>
+                                            @else
                                             <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}"><img class="user-sub-menu-in-icon" src="{{asset('assetsfront/images/icon/32s.png')}}" alt="" width=25px> العربية</a>
-                                        </li> -->
-                                        --}}
+                                            @endif
+                                        </li>
                                     </ul>
-                                </li>
-
-                            </ul> <!-- End Header Top Menu -->
+                                </nav>
+                            </div> <!-- Header Main Menu Start -->
                         </div>
                     </div>
                 </div>
-            </div>
-        </div> <!-- End Header Top Area -->
+            </div> <!-- End Bottom Area -->
+        </header> <!-- ...:::: End Header Section:::... -->
 
-        <!-- Start Header Center Area -->
-        <div class="header-center">
-            <div class="container">
-                <div class="row d-flex justify-content-between align-items-center">
-                    <div class="col-3">
-                        <!-- Logo Header -->
-                        <div class="header-logo">
-                            <a href="{{ route('veiwhome') }}"><img src="{{asset('assetsfront/images/logo/logo.png')}}" alt="" width="80%" ></a>
-                        </div>
-                    </div>
-                    @if(!request()->route()->named('veiwhome'))
-                        <div class="col-6" style="{{request()->is('product/*') ? 'display:none' : ''}}">
-                        <!-- Start Header Search -->
-                        <div class="header-search">
-                            <form action="{{ route('front-product') }}" method="get">
-                                <div class="header-search-box default-search-style d-flex">
-                                    <input name="name" class="default-search-style-input-box border-around border-right-none" type="search" placeholder="@Lang('main.Enter your search words')" required>
-                                    <button class="default-search-style-input-btn" type="submit"><i class="icon-search"></i></button>
-                                </div>
-                            </form>
-                        </div> <!-- End Header Search -->
-                    </div>
-                    @endif
-                    <div class="col-3 text-end">
-                        <!-- Start Header Action Icon -->
-                        <ul class="header-action-icon">
-                            @if($general->links == 'yes')
-                                <a href="{{ route('front-product') }}" class="hero-button">@Lang('main.Shop now')</a>
-                            @endif
-                        </ul> <!-- End Header Action Icon -->
-                    </div>
-                </div>
-            </div>
-        </div> <!-- End Header Center Area -->
-
-        <!-- Start Bottom Area -->
-        <div class="header-bottom sticky-header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <!-- Header Main Menu -->
-                        <div class="main-menu">
-                            <nav>
-                                <ul>
-
-                                    <div class="mega-menu">
-
-                                        <div class="menu-banner">
-                                            <a href="" class="menu-banner-link">
-                                                <img class="menu-banner-img" src="{{asset('assetsfront/images/banner/menu-banner.jpg')}}" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-
-                                    <li>
-                                        <a class="{{Route::current()->getName() == 'veiwhome' ? 'active main-menu-link' : '' }}" href="{{ route('veiwhome') }}">@Lang('main.Home')</a>
-                                    </li>
-                                    
-                                    @if($general->links == 'yes')
-                                        @if(\App\Models\Category::count() > 0)
-                                            <li class="has-dropdown">
-                                                <a class=" main-menu-link {{Route::current()->getName() == 'front-category' ? 'active main-menu-link' : '' }}" href="{{ route('front-category') }}">@Lang('main.Products')
-                                                    <i class="fa fa-angle-down" style="margin-{{ __('main.dir') == 'rtl' ? 'right' : 'left' }}: 3px "></i>
-                                                </a>
-                                                <ul class="sub-menu">
-                                                    @foreach (\App\Models\Category::all() as $category)
-                                                        <li>
-                                                            <a href="{{route('front-show-category',$category->id)}}">{{$category['name_'.app()->getLocale()]}}</a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-                                        @else
-                                            <li>
-                                                <a class="{{Route::current()->getName() == 'front-category' ? 'active main-menu-link' : '' }}" href="{{ route('front-category') }}">@Lang('main.Products')</a>
-                                            </li>
-                                        @endif
-                                     @endif
-                                     
-                                    {{-- <li>
-                                        <a class="{{Route::current()->getName() == 'front-product' ? 'active main-menu-link' : '' }}" href="{{ route('front-product') }}">@Lang('main.Products') @Lang('main.Categories')</a>
-                                    </li>--}}
-
-                                    <li>
-                                        <a class="{{Route::current()->getName() == 'front-faq' ? 'active main-menu-link' : '' }}" href="{{ route('front-faq') }}">@Lang('main.FAQ') </a>
-                                    </li>
-
-                                    <li>
-                                        <a class="{{Route::current()->getName() == 'front-contact' ? 'active main-menu-link' : '' }}" href="{{route('front-contact')}}">@Lang('main.Contact us')</a>
-                                    </li>
-
-                                </ul>
-                            </nav>
-                        </div> <!-- Header Main Menu Start -->
-                    </div>
-                </div>
-            </div>
-        </div> <!-- End Bottom Area -->
-    </header> <!-- ...:::: End Header Section:::... -->
-
-    <!-- ...:::: Start Mobile Header Section:::... -->
-    <div class="mobile-header-section d-block d-lg-none">
-        <!-- Start Mobile Header Wrapper -->
-        <div class="mobile-header-wrapper">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 d-flex justify-content-between align-items-center">
-                        <div class="mobile-header--left">
-                             <a href="{{ route('veiwhome') }}" class="mobile-logo-link">
-                                <img src="{{asset('assetsfront/images/logo/logo.png')}}" alt="" width="50%" class="mobile-logo-img">
-                            </a>
-                        </div>
-                        <div class="mobile-header--right">
-                            <a href="#mobile-menu-offcanvas" class="mobile-menu offcanvas-toggle">
-                                <span class="mobile-menu-dash"></span>
-                                <span class="mobile-menu-dash"></span>
-                                <span class="mobile-menu-dash"></span>
-                            </a>
+        <!-- ...:::: Start Mobile Header Section:::... -->
+        <div class="mobile-header-section d-block d-lg-none">
+            <!-- Start Mobile Header Wrapper -->
+            <div class="mobile-header-wrapper">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-between align-items-center">
+                            <div class="mobile-header--left">
+                                <a href="{{ route('veiwhome') }}" class="mobile-logo-link">
+                                    <img src="{{asset('assetsfront/images/logo/logo.svg')}}" alt="" width="50%" class="mobile-logo-img">
+                                </a>
+                            </div>
+                            <div class="mobile-header--right">
+                                <a href="#mobile-menu-offcanvas" class="mobile-menu offcanvas-toggle">
+                                    <span class="mobile-menu-dash"></span>
+                                    <span class="mobile-menu-dash"></span>
+                                    <span class="mobile-menu-dash"></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div> <!-- End Mobile Header Wrapper -->
-    </div> <!-- ...:::: Start Mobile Header Section:::... -->
+            </div> <!-- End Mobile Header Wrapper -->
+        </div> <!-- ...:::: Start Mobile Header Section:::... -->
 
-    <!-- ...:::: Start Offcanvas Mobile Menu Section:::... -->
-    <div id="mobile-menu-offcanvas" class="offcanvas offcanvas-leftside offcanvas-mobile-menu-section">
-        <!-- Start Offcanvas Header -->
-        <div class="offcanvas-header d-flex justify-content-end">
-            <button class="offcanvas-close"><i class="fa fa-times"></i></button>
-        </div> <!-- End Offcanvas Header -->
-        <!-- Start Offcanvas Mobile Menu Wrapper -->
-        <div class="offcanvas-mobile-menu-wrapper">
-            <!-- Start Mobile Menu User Top -->
-            <div class="mobile-menu-top">
-                <span> @Lang('main.Welcome to our store!')</span>
-                <!-- Start Header Top Menu -->
-                <ul class="mobile-menu-user-menu">
+        <!-- ...:::: Start Offcanvas Mobile Menu Section:::... -->
+        <div id="mobile-menu-offcanvas" class="offcanvas offcanvas-leftside offcanvas-mobile-menu-section">
+            <!-- Start Offcanvas Header -->
+            <div class="offcanvas-header d-flex justify-content-end">
+                <button class="offcanvas-close"><i class="fa fa-times"></i></button>
+            </div> <!-- End Offcanvas Header -->
+            <!-- Start Offcanvas Mobile Menu Wrapper -->
+            <div class="offcanvas-mobile-menu-wrapper">
+                <!-- Start Mobile Menu User Center -->
+                <div class="mobile-menu-center">
+                    <form action="{{ route('front-product') }}" method="get">
+                        <div class="header-search-box default-search-style d-flex">
+                            <input class="default-search-style-input-box border-around border-right-none" name="name" type="search" placeholder="@Lang('main.Enter your search words')" required>
+                            <button class="default-search-style-input-btn" type="submit"><i class="icon-search"></i></button>
+                        </div>
+                    </form>
 
-
-                    <li class="has-mobile-user-dropdown">
-                        <a class="mobile-user-menu-link" href="">العربية</a>
-                        <!-- Header Top Menu's Dropdown -->
-                        <ul class="mobile-user-sub-menu">
-                        <ul class="user-sub-menu">
-                                    </ul>
-                            <li><a href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img class="user-sub-menu-link-icon" src="{{asset('assetsfront/images/icon/32.png')}}" alt="" width=25px> English</a></li>
-                            <li><a href="{{ LaravelLocalization::getLocalizedURL('ar') }}"><img class="user-sub-menu-link-icon" src="{{asset('assetsfront/images/icon/32s.png')}}" alt="" width=25px> العربية</a></li>
-                        </ul>
-                    </li>
-                </ul> <!-- End Header Top Menu -->
-            </div> <!-- End Mobile Menu User Top -->
-            <!-- Start Mobile Menu User Center -->
-            <div class="mobile-menu-center">
-                <form action="{{ route('front-product') }}" method="get">
-                    <div class="header-search-box default-search-style d-flex">
-                        <input class="default-search-style-input-box border-around border-right-none" name="name" type="search" placeholder="@Lang('main.Enter your search words')" required>
-                        <button class="default-search-style-input-btn" type="submit"><i class="icon-search"></i></button>
-                    </div>
-                </form>
-
-            </div> <!-- End Mobile Menu User Center -->
-            <!-- Start Mobile Menu Bottom -->
-            <div class="mobile-menu-bottom">
-                <!-- Start Mobile Menu Nav -->
-                <div class="offcanvas-menu">
-                    <ul>
-
-                        <li><a href="{{ route('veiwhome') }}">@Lang('main.Home')</a></li>
-                        @if($general->links == 'yes')
+                </div> <!-- End Mobile Menu User Center -->
+                <!-- Start Mobile Menu Bottom -->
+                <div class="mobile-menu-bottom">
+                    <!-- Start Mobile Menu Nav -->
+                    <div class="offcanvas-menu">
+                        <ul>
+                            <li><a href="{{ route('veiwhome') }}">@Lang('main.Home')</a></li>
                             @if(\App\Models\Category::count() > 0)
-                                <li class="">
-                                    <div class="offcanvas-menu-expand"></div>
-                                    <a href="{{ route('front-category') }}"><span>@Lang('main.Products')</span></a>
-                                    <ul class="mobile-sub-menu" style="display: none;">
-                                        @foreach (\App\Models\Category::all() as $category)
-                                            <li>
-                                                <a href="{{route('front-show-category',$category->id)}}">{{$category['name_'.app()->getLocale()]}}</a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                            @else
-                                <li><a href="{{ route('front-category') }}">@Lang('main.Products')</a></li>
+                            <li class="">
+                                <div class="offcanvas-menu-expand"></div>
+                                <a href="{{ route('front-category') }}"><span>@Lang('main.Categories')</span></a>
+                                <ul class="mobile-sub-menu" style="display: none;">
+                                    @foreach (\App\Models\Category::all() as $category)
+                                    <li>
+                                        <a href="{{route('front-show-category',$category->id)}}">{{$category['name_'.app()->getLocale()]}}</a>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </li>
                             @endif
-                        @endif
-                        {{-- <li><a href="{{ route('front-product') }}">@Lang('main.Products')</a></li>--}}
-                        <li><a href="{{ route('front-faq') }}">@Lang('main.FAQ')</a></li>
-                        <li><a href="{{route('front-contact')}}">@Lang('main.Contact us')</a></li>
-                    </ul>
-                </div> <!-- End Mobile Menu Nav -->
+                            <li><a href="{{ route('front-product') }}">@Lang('main.Products')</a></li>
+                            <li><a href="{{ route('front-faq') }}">@Lang('main.FAQ')</a></li>
+                            <li><a href="{{route('front-contact')}}">@Lang('main.Contact us')</a></li>
+                            @if(app()->getLocale() == 'ar')
+                            <li><a href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img class="user-sub-menu-link-icon" src="{{asset('assetsfront/images/icon/32.png')}}" alt="" width=25px> English</a></li>
+                            @else
+                            <li><a href="{{ LaravelLocalization::getLocalizedURL('ar') }}"><img class="user-sub-menu-link-icon" src="{{asset('assetsfront/images/icon/32s.png')}}" alt="" width=25px> العربية</a></li>
+                            @endif
+                        </ul>
+                    </div> <!-- End Mobile Menu Nav -->
 
-            </div> <!-- End Mobile Menu Bottom -->
-        </div> <!-- End Offcanvas Mobile Menu Wrapper -->
-    </div> <!-- ...:::: End Offcanvas Mobile Menu Section:::... -->
+                </div> <!-- End Mobile Menu Bottom -->
+            </div> <!-- End Offcanvas Mobile Menu Wrapper -->
+        </div> <!-- ...:::: End Offcanvas Mobile Menu Section:::... -->
 
-    <!-- ...:::: Start Offcanvas Addcart Section :::... -->
-    <div id="offcanvas-add-cart" class="offcanvas offcanvas-rightside offcanvas-add-cart-section">
-        <!-- Start Offcanvas Header -->
-        <div class="offcanvas-header text-end">
-            <button class="offcanvas-close"><i class="fa fa-times"></i></button>
-        </div> <!-- End Offcanvas Header -->
+        <!-- ...:::: Start Offcanvas Addcart Section :::... -->
+        <div id="offcanvas-add-cart" class="offcanvas offcanvas-rightside offcanvas-add-cart-section">
+            <!-- Start Offcanvas Header -->
+            <div class="offcanvas-header text-end">
+                <button class="offcanvas-close"><i class="fa fa-times"></i></button>
+            </div> <!-- End Offcanvas Header -->
 
-        <!-- Start  Offcanvas Addcart Wrapper -->
-         <!-- End  Offcanvas Addcart Wrapper -->
+            <!-- Start  Offcanvas Addcart Wrapper -->
+            <!-- End  Offcanvas Addcart Wrapper -->
 
-    </div> <!-- ...:::: End  Offcanvas Addcart Section :::... -->
+        </div> <!-- ...:::: End  Offcanvas Addcart Section :::... -->
 
-    <!-- ...:::: Start Offcanvas Mobile Menu Section:::... -->
-    <!-- ...:::: End Offcanvas Mobile Menu Section:::... -->
-    @yield('content')
+        <!-- ...:::: Start Offcanvas Mobile Menu Section:::... -->
+        <!-- ...:::: End Offcanvas Mobile Menu Section:::... -->
+        @yield('content')
 
 
 
-    <!-- ...:::: Start Footer Section:::... -->
-    <footer class="footer-section section-top-gap-100">
-        <!-- Start Footer Top Area -->
-        <div class="footer-top section-inner-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-12">
-                        <div class="footer-widget footer-widget-contact" data-aos="fade-up"  data-aos-delay="0">
-                            <div class="footer-logo">
-                                <a href="{{route('veiwhome')}}"><img src="{{asset('images/'.$general->image)}}" alt="" class="img-fluid"></a>
-                            </div>
-                            <div class="footer-contact">
-                                <p>{{$general->description}}</p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12">
-                        <div class="footer-widget footer-widget-subscribe" data-aos="fade-up"  data-aos-delay="200">
-                            <h3 class="footer-widget-title">@lang('main.sub_info')</h3>
-                            <form class="row g-3 needs-validation" novalidate action="{{ route('front-store-contact') }}"
-                              method="post" enctype="multipart/form-data">
-                              @csrf
-                                <div class="footer-subscribe-box default-search-style d-flex">
-                                    <input class="default-search-style-input-box border-around border-right-none subscribe-form" type="email" placeholder="@lang('main.Get In Touch')...." name="name" required>
-                                    <button class="default-search-style-input-btn" style="right: 10px;" type="submit">@lang('main.subscribe')</button>
+        <!-- ...:::: Start Footer Section:::... -->
+        <footer class="footer-section section-top-gap-100">
+            <!-- Start Footer Top Area -->
+            <div class="footer-top section-inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="footer-widget footer-widget-contact" data-aos="fade-up" data-aos-delay="0">
+                                <div class="footer-logo">
+                                    <a href="{{route('veiwhome')}}"><img src="{{asset('images/'.$general->image)}}" alt="" class="img-fluid"></a>
                                 </div>
-                            </form>
-                            <p class="footer-widget-subscribe-note">@lang('main.email_not_share')</p>
-                            <ul class="footer-social">
-                                <li><a href="{{$info->facebook}}" target="_ blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="{{$info->snapchat}}" target="_ blank" class="youtube"><i class="fa fa-snapchat"></i></a></li>
-                                <li><a href="https://wa.me/{{$info->whatsapp}}?text=مرحبا" target="_ blank" class="pinterest"><i class="fa fa-whatsapp"></i></a></li>
-                                <li><a href="{{$info->instagram}}" target="_ blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
+                                <div class="footer-contact">
+                                    <p>{{$general->description}}</p>
+
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12">
-                        <div class="footer-widget footer-widget-menu" data-aos="fade-up"  data-aos-delay="600">
-                            <h3 class="footer-widget-title">@lang('main.info')</h3>
-                            <div class="footer-menu">
-                                <ul class="footer-menu-nav">
-                                    <li><a href="{{ route('veiwhome') }}">@Lang('main.Home')</a></li>
-                                    @if($general->links == 'yes')
-                                        <li><a href="{{ route('front-category') }}">@Lang('main.Products')</a></li>
-                                    @endif
-                                    <li><a href="{{ route('front-faq') }}">@Lang('main.FAQ')</a></li>
-                                    <li><a href="{{ route('front-contact') }}">@Lang('main.Contact us')</a></li>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <div class="footer-widget footer-widget-subscribe" data-aos="fade-up" data-aos-delay="200">
+                                <h3 class="footer-widget-title">@lang('main.sub_info')</h3>
+                                <form class="row g-3 needs-validation" novalidate action="{{ route('front-store-contact') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="footer-subscribe-box default-search-style d-flex">
+                                        <input class="default-search-style-input-box border-around border-right-none subscribe-form" type="email" placeholder="@lang('main.Get In Touch')...." name="name" required>
+                                        <button class="default-search-style-input-btn" style="right: 10px;" type="submit">@lang('main.subscribe')</button>
+                                    </div>
+                                </form>
+                                <p class="footer-widget-subscribe-note">@lang('main.email_not_share')</p>
+                                <ul class="footer-social">
+                                    <li><a href="{{$info->facebook}}" target="_ blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="{{$info->snapchat}}" target="_ blank" class="youtube"><i class="fa fa-snapchat"></i></a></li>
+                                    <li><a href="https://wa.me/{{$info->whatsapp}}?text=مرحبا" target="_ blank" class="pinterest"><i class="fa fa-whatsapp"></i></a></li>
+                                    <li><a href="{{$info->instagram}}" target="_ blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
                                 </ul>
                             </div>
                         </div>
+                        <div class="col-lg-3 col-md-3 col-sm-12">
+                            <div class="footer-widget footer-widget-menu" data-aos="fade-up" data-aos-delay="600">
+                                <h3 class="footer-widget-title">@lang('main.info')</h3>
+                                <div class="footer-menu">
+                                    <ul class="footer-menu-nav">
+                                        <li><a href="{{ route('veiwhome') }}">@Lang('main.Home')</a></li>
+                                        @if($general->links == 'yes')
+                                        <li><a href="{{ route('front-category') }}">@Lang('main.Products')</a></li>
+                                        @endif
+                                        <li><a href="{{ route('front-faq') }}">@Lang('main.FAQ')</a></li>
+                                        <li><a href="{{ route('front-contact') }}">@Lang('main.Contact us')</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div> <!-- End Footer Top Area -->
-          <!-- Start Footer Bottom Area -->
-          <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-md-12 text-center">
-                        <p class="copyright-area-text" style="display: inline-block;">Copyright &copy; 2022 <a class="copyright-link" href="">الفارع-ALFARAA</a></p>
-                        <a href="https://masteredcode.com/"><img src="{{asset('assetsfront/images/logo/logo2.png')}}" alt=""width="15%" ></a>
+            </div> <!-- End Footer Top Area -->
+            <!-- Start Footer Bottom Area -->
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 text-center">
+                            <p class="copyright-area-text" style="display: inline-block;">Copyright &copy;
+                                <script>
+                                    document.write(new Date().getFullYear());
+                                </script>
+                                <a class="copyright-link" href="https://www.alfaraaonline.com.sa/" target="_blank">الفارع-ALFARAA</a>
+                            </p>
+                        </div>
                     </div>
-
-
-                    <div class="col-lg-6 col-md-6">
-                       
-                    </div>
-
                 </div>
-            </div>
-        </div> <!-- End Footer Bottom Area -->
-    </footer>
-    <!-- ...:::: End Footer Section:::... -->
-
+            </div> <!-- End Footer Bottom Area -->
+        </footer>
+        <!-- ...:::: End Footer Section:::... -->
     </div>
-    
+
     <!-- ::::::::::::::All JS Files here :::::::::::::: -->
     <!-- Global Vendor, plugins JS -->
 
     @if(request()->route()->named('veiwhome'))
-        {{--<script>
+    {{--<script>
             // function backNormal(){
             //     const element = document.getElementById('loader');
             //     element.style.display = 'none';
@@ -515,7 +400,7 @@ $info = \App\Models\Info::first();
             });
         </script>--}}
     @endif
-    
+
     <script src="{{asset('assetsfront/js/vendor/modernizr-3.11.2.min.js')}}"></script>
     <script src="{{asset('assetsfront/js/vendor/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('assetsfront/js/vendor/jquery-migrate-3.3.2.min.js')}}"></script>
@@ -535,7 +420,7 @@ $info = \App\Models\Info::first();
     <!-- <script src="assets/js/vendor.min.js"></script>
     <script src="assets/js/plugins.min.js"></script> -->
 
-    <!-- Main JS -->\
+    <!-- Main JS -->
     <script>
         window.lang = "{{app()->getLocale()}}";
     </script>
