@@ -167,7 +167,7 @@ $info = \App\Models\Info::first();
                             <!-- Header Main Menu -->
                             <div class="main-menu">
                                 <nav>
-                                    <a class="logo" href="{{ route('veiwhome') }}"><img src="{{asset('assetsfront/images/logo/logo-light.svg')}}"></a>
+                                    <a class="logo" href="{{ route('veiwhome') }}"><img src="{{asset('assetsfront/images/logo/logo-light.png')}}"></a>
                                     <ul>
                                         <li>
                                             <a class="{{Route::current()->getName() == 'veiwhome' ? 'active main-menu-link' : '' }}" href="{{ route('veiwhome') }}">@Lang('main.Home')</a>
@@ -221,7 +221,7 @@ $info = \App\Models\Info::first();
                         <div class="col-12 d-flex justify-content-between align-items-center">
                             <div class="mobile-header--left">
                                 <a href="{{ route('veiwhome') }}" class="mobile-logo-link">
-                                    <img src="{{asset('assetsfront/images/logo/logo.svg')}}" alt="" width="50%" class="mobile-logo-img">
+                                    <img src="{{asset('assetsfront/images/logo/logo.png')}}" alt="" width="50%" class="mobile-logo-img">
                                 </a>
                             </div>
                             <div class="mobile-header--right">
