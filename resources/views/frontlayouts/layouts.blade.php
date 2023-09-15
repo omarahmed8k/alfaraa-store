@@ -30,7 +30,7 @@ $info = \App\Models\Info::first();
     <link rel="stylesheet" href="{{asset('assetsfront/css/plugins/venobox.min.css')}}">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{{asset('assetsfront/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assetsfront/css/stylee.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700;800&display=swap" rel="stylesheet">
@@ -191,7 +191,7 @@ $info = \App\Models\Info::first();
                                             <a class="{{Route::current()->getName() == 'front-product' ? 'active main-menu-link' : '' }}" href="{{ route('front-product') }}">@Lang('main.Products')</a>
                                         </li>
                                         <li>
-                                            <a class="{{Route::current()->getName() == 'front-faq' ? 'active main-menu-link' : '' }}" href="{{ route('front-faq') }}">@Lang('main.FAQ') </a>
+                                            <a href="https://alfaraaonline.com.sa/" target="_blank">@Lang('main.Website')</a>
                                         </li>
                                         <li>
                                             <a class="{{Route::current()->getName() == 'front-contact' ? 'active main-menu-link' : '' }}" href="{{route('front-contact')}}">@Lang('main.Contact us')</a>
@@ -275,7 +275,7 @@ $info = \App\Models\Info::first();
                             </li>
                             @endif
                             <li><a href="{{ route('front-product') }}">@Lang('main.Products')</a></li>
-                            <li><a href="{{ route('front-faq') }}">@Lang('main.FAQ')</a></li>
+                            <li><a href="https://alfaraaonline.com.sa/" target="_blank">@Lang('main.Website')</a></li>
                             <li><a href="{{route('front-contact')}}">@Lang('main.Contact us')</a></li>
                             @if(app()->getLocale() == 'ar')
                             <li><a href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img class="user-sub-menu-link-icon" src="{{asset('assetsfront/images/icon/32.png')}}" alt="" width=25px> English</a></li>
@@ -308,70 +308,97 @@ $info = \App\Models\Info::first();
 
 
         <!-- ...:::: Start Footer Section:::... -->
-        <footer class="footer-section section-top-gap-100">
+        <footer class="footer-section">
             <!-- Start Footer Top Area -->
             <div class="footer-top section-inner-bg">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-12">
+                        <div class="col-lg-3 col-md-12 col-sm-12">
                             <div class="footer-widget footer-widget-contact" data-aos="fade-up" data-aos-delay="0">
                                 <div class="footer-logo">
                                     <a href="{{route('veiwhome')}}"><img src="{{asset('images/'.$general->image)}}" alt="" class="img-fluid"></a>
                                 </div>
                                 <div class="footer-contact">
                                     <p>{{$general->description}}</p>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6 col-md-6 col-sm-12">
-                            <div class="footer-widget footer-widget-subscribe" data-aos="fade-up" data-aos-delay="200">
-                                <h3 class="footer-widget-title">@lang('main.sub_info')</h3>
-                                <form class="row g-3 needs-validation" novalidate action="{{ route('front-store-contact') }}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="footer-subscribe-box default-search-style d-flex">
-                                        <input class="default-search-style-input-box border-around border-right-none subscribe-form" type="email" placeholder="@lang('main.Get In Touch')...." name="name" required>
-                                        <button class="default-search-style-input-btn" style="right: 10px;" type="submit">@lang('main.subscribe')</button>
-                                    </div>
-                                </form>
-                                <p class="footer-widget-subscribe-note">@lang('main.email_not_share')</p>
-                                <ul class="footer-social">
-                                    <li><a href="{{$info->facebook}}" target="_ blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="{{$info->snapchat}}" target="_ blank" class="youtube"><i class="fa fa-snapchat"></i></a></li>
-                                    <li><a href="https://wa.me/{{$info->whatsapp}}?text=مرحبا" target="_ blank" class="pinterest"><i class="fa fa-whatsapp"></i></a></li>
-                                    <li><a href="{{$info->instagram}}" target="_ blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                        <div class="col-lg-3 col-md-12 col-sm-12 mt-5">
+                            <h3 class="footer-widget-title">@lang('main.branches')</h3>
+                            <div class="footer-menu">
+                                <ul class="footer-menu-nav">
+                                    <li>@Lang('main.branche1')</li>
+                                    <li><a href="https://maps.app.goo.gl/4rsxMAiozGxB7a9c6" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche1Address')</span></a></li>
+                                    <li><a href="tel:@Lang('main.branche1Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche1Phone')</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-menu">
+                                <ul class="footer-menu-nav">
+                                    <li>@Lang('main.branche2')</li>
+                                    <li><a href="https://maps.app.goo.gl/RQ1WqJBHKE89pgeQA" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche2Address')</span></a></li>
+                                    <li><a href="tel:@Lang('main.branche2Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche2Phone')</span></a></li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-3 col-sm-12">
-                            <div class="footer-widget footer-widget-menu" data-aos="fade-up" data-aos-delay="600">
-                                <h3 class="footer-widget-title">@lang('main.info')</h3>
-                                <div class="footer-menu">
-                                    <ul class="footer-menu-nav">
-                                        <li><a href="{{ route('veiwhome') }}">@Lang('main.Home')</a></li>
-                                        @if($general->links == 'yes')
-                                        <li><a href="{{ route('front-category') }}">@Lang('main.Products')</a></li>
-                                        @endif
-                                        <li><a href="{{ route('front-faq') }}">@Lang('main.FAQ')</a></li>
-                                        <li><a href="{{ route('front-contact') }}">@Lang('main.Contact us')</a></li>
-                                    </ul>
-                                </div>
+                        <div class="col-lg-3 col-md-12 col-sm-12 mt-5">
+                            <h3 class="footer-widget-title"> &nbsp;</h3>
+                            <div class="footer-menu">
+                                <ul class="footer-menu-nav">
+                                    <li>@Lang('main.branche3')</li>
+                                    <li><a href="https://maps.app.goo.gl/6vXnw5rXc5RfeVTS8" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche3Address')</span></a></li>
+                                    <li><a href="tel:@Lang('main.branche3Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche3Phone')</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-menu">
+                                <ul class="footer-menu-nav">
+                                    <li>@Lang('main.branche4')</li>
+                                    <li><a href="https://maps.app.goo.gl/HxvppHccMUJeqMp17" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche4Address')</span></a></li>
+                                    <li><a href="tel:@Lang('main.branche4Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche4Phone')</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-12 col-sm-12 mt-5">
+                            <h3 class="footer-widget-title"> &nbsp;</h3>
+                            <div class="footer-menu">
+                                <ul class="footer-menu-nav">
+                                    <li>@Lang('main.branche5')</li>
+                                    <li><a href="https://alfaraaonline.com.sa/" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche5Address')</span></a></li>
+                                    <li><a href="tel:@Lang('main.branche5Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche5Phone')</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="footer-menu">
+                                <ul class="footer-menu-nav">
+                                    <li>@Lang('main.branche6')</li>
+                                    <li><a href="https://maps.app.goo.gl/UGdnYyeybPd4Le427" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche6Address')</span></a></li>
+                                    <li><a href="tel:@Lang('main.branche6Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche6Phone')</span></a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> <!-- End Footer Top Area -->
+            </div>
             <!-- Start Footer Bottom Area -->
             <div class="footer-bottom">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-12 col-md-12 text-center">
-                            <p class="copyright-area-text" style="display: inline-block;">Copyright &copy;
-                                <script>
-                                    document.write(new Date().getFullYear());
-                                </script>
-                                <a class="copyright-link" href="https://www.alfaraaonline.com.sa/" target="_blank">الفارع-ALFARAA</a>
-                            </p>
+                        <div class="col-lg-6 col-md-12">
+                            <div class="footer-rights">
+                                <p class="copyright-area-text" style="display: inline-block;">
+                                    @Lang('main.rights')
+                                    <script>
+                                        document.write(new Date().getFullYear());
+                                    </script>
+                                    <a class="copyright-link" href="https://www.alfaraaonline.com.sa/" target="_blank">الفارع-ALFARAA</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-12">
+                            <ul class="footer-social">
+                                <li><a href="{{$info->facebook}}" target="_ blank" class="facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="{{$info->snapchat}}" target="_ blank" class="youtube"><i class="fa fa-snapchat"></i></a></li>
+                                <li><a href="https://wa.me/{{$info->whatsapp}}?text=مرحبا" target="_ blank" class="pinterest"><i class="fa fa-whatsapp"></i></a></li>
+                                <li><a href="{{$info->instagram}}" target="_ blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>

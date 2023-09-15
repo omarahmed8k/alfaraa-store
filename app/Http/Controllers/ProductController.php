@@ -37,7 +37,7 @@ class ProductController extends Controller
         $image = $request->file('image');
         $imgFile = Image::make($image->getRealPath());
         // create a new Image instance for inserting
-        $watermark = Image::make(public_path('assetsfront/images/logo/logo.png'));
+        $watermark = Image::make(public_path('assetsfront/images/logo/logo-notext.png'));
         if($imgFile->width() < $watermark->width()){
             $watermark->resize($imgFile->width(), null);
         }
@@ -100,7 +100,7 @@ class ProductController extends Controller
             $image = $request->file('image');
             $imgFile = Image::make($image->getRealPath());
             // create a new Image instance for inserting
-            $watermark = Image::make(public_path('assetsfront/images/logo/logo.png'));
+            $watermark = Image::make(public_path('assetsfront/images/logo/logo-notext.png'));
             if($imgFile->width() < $watermark->width()){
                 $watermark->resize($imgFile->width(), null);
             }

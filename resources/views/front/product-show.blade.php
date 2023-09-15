@@ -1,15 +1,15 @@
 @extends('frontlayouts.layouts')
 
-@section('title') {{ $product['name_'.app()->getLocale()] }} @endsection
-@section('description') {{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] : $general->description }} @endsection
-
+@section('title') {{$product['name_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st}}
+@endsection
+@section('description') {{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st : $general->description . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st }} @endsection
 @section('meta')
 <meta property="og:site_name" content="{{$general->title}}" />
 
 <meta property="og:url" content="{{request()->url()}}" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="{{ $product['name_'.app()->getLocale()] }}" />
-<meta property="og:description" content="{{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] : $product['name_'.app()->getLocale()] }}" />
+<meta property="og:title" content="{{ $product['name_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st }}" />
+<meta property="og:description" content="{{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st : $general->description . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st }}" />
 <meta property="og:image" itemprop="image" content="{{asset('images/'.$product->image)}}" />
 <meta property='og:locale' content='{{app()->getLocale() == "ar" ? "ar_EG" : "en_US"}}' />
 
@@ -22,7 +22,7 @@
 <meta name="twitter:domain" content="{{request()->getHost()}}" />
 <meta name="twitter:url" content="{{request()->url()}}" />
 <meta name="twitter:title" content="{{ $product['name_'.app()->getLocale()] }}" />
-<meta name="twitter:description" content="{{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] : $product['name_'.app()->getLocale()] }}" />
+<meta name="twitter:description" content="{{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st : $general->description . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st }}" />
 <meta name="twitter:image" content="{{asset('images/'.$product->image)}}" />
 
 <meta property="og:country-name" content="Saudi Arabia" />
@@ -31,13 +31,13 @@
 @section('content')
 
 
-<link itemprop="thumbnailUrl" href="{{asset('images/'.$product->image)}}"> 
-<span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject"> 
-  <link itemprop="url" href="{{asset('images/'.$product->image)}}"> 
+<link itemprop="thumbnailUrl" href="{{asset('images/'.$product->image)}}">
+<span itemprop="thumbnail" itemscope itemtype="http://schema.org/ImageObject">
+    <link itemprop="url" href="{{asset('images/'.$product->image)}}">
 </span>
 
-<span itemprop="image" itemscope itemtype="image/{{pathinfo(asset('images/'.$product->image), PATHINFO_EXTENSION) == 'jpg' ? 'jpeg' : pathinfo(asset('images/'.$product->image), PATHINFO_EXTENSION)}}"> 
-    <link itemprop="url" href="{{asset('images/'.$product->image)}}"> 
+<span itemprop="image" itemscope itemtype="image/{{pathinfo(asset('images/'.$product->image), PATHINFO_EXTENSION) == 'jpg' ? 'jpeg' : pathinfo(asset('images/'.$product->image), PATHINFO_EXTENSION)}}">
+    <link itemprop="url" href="{{asset('images/'.$product->image)}}">
 </span>
 
 
@@ -50,41 +50,24 @@
             <div class="row">
                 <div class="col-12 d-flex justify-content-between justify-content-md-between  align-items-center flex-md-row flex-column">
                     <h3 class="breadcrumb-title">{{ $product['name_'.app()->getLocale()] }}</h3>
-
                 </div>
             </div>
         </div>
     </div>
+    <form class="hero-search" action="{{ route('front-product') }}" method="get">
+        <div class="header-search-box default-search-style d-flex">
+            <input name="name" class="default-search-style-input-box" type="search" required placeholder="@Lang('main.searchBy')">
+            <button class="default-search-style-input-btn" type="submit"><i class="icon-search"></i></button>
+        </div>
+    </form>
 </div> <!-- ...:::: End Breadcrumb Section:::... -->
-
-<div class="banner-section">
-    <!-- Start Banner Wrapper -->
-    <div class="banner-wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <!-- Start Header Search -->
-                    <div class="header-search">
-                        <form action="{{ route('front-product') }}" method="get">
-                            <div class="header-search-box default-search-style d-flex">
-                                <input name="name" class="default-search-style-input-box border-around border-right-none" type="search" placeholder="ابحث عن المنتج هنا برقم او اسم المنتج" required>
-                                <button class="default-search-style-input-btn" type="submit"><i class="icon-search"></i></button>
-                            </div>
-                        </form>
-                    </div> <!-- End Header Search -->
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <!-- Start Product Details Section -->
 <div class="product-details-section section-top-gap-100">
     <div class="container">
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-md-6">
-                <div class="product-details-gallery-area" data-aos="fade-up"  data-aos-delay="0">
+                <div class="product-details-gallery-area" data-aos="fade-up" data-aos-delay="0">
                     <div class="product-large-image product-large-image-horaizontal">
                         <div class="product-image-large-single zoom-image-hover">
                             <img src="{{asset('images/'.$product->image)}}" alt="">
@@ -94,7 +77,6 @@
                             <img src="{{$image->path_url}}" alt="">
                         </div>
                         @endforeach
-
                     </div>
                     <div class="product-image-thumb product-image-thumb-horizontal pos-relative">
                         <div class="zoom-active product-image-thumb-single">
@@ -109,92 +91,76 @@
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="product-details-content-area" data-aos="fade-up"  data-aos-delay="200">
+                <div class="product-details-content-area" data-aos="fade-up" data-aos-delay="200">
                     <!-- Start  Product Details Text Area-->
                     <div class="product-details-text">
                         <h4 class="title">{{ $product['name_'.app()->getLocale()] }}</h4>
-
-                        <div class="price">{{ $product->price}}</div>
-                        <p>{{ $product['dese_'.app()->getLocale()] }}</p>
-
-                        <h5 class="title">@Lang('main.Product number')</h5>
-                        {{--<h5 class="price"> <span  style="background-color:#333333;">{{ $product->nickname_st }}</span> </h5>--}}
-                        {{--<h5 class="price"> {{ $product->nickname_num }}</h5>--}}
-                        <div class="price">
-                            <span style="background-color:#333333;padding: 5px;color: #ffff;">{{ $product->nickname_st }}</span>
-                            <span>{{ $product->nickname_num }}</span>
-                        </div>
-                        
-                        <h5 class="title"> @Lang('main.serial number')</h5>
-                        
-                        <h5 class="price"> {{ $product->nickname_main }}</h5>
-
+                        <div class="price">السعر عند التواصل</div>
+                        <!--<p>{{ $product['dese_'.app()->getLocale()] }}</p>-->
+                        <h5 class="title">
+                            <i class="fa fa-barcode"></i>
+                            <span>{{ $product->nickname_num ? $product->nickname_num : '' }} - {{ $product->nickname_main ? $product->nickname_main : '' }} - {{ $product->nickname_st ? $product->nickname_st : '' }}</span>
+                        </h5>
                     </div>
                     <!-- End  Product Details Text Area-->
-
                     <div class="price">
-
                         @if($product->status == 'active')
-                            <div class="product-default-content">
-                                <!--<h6 class="product-default-link"><a href="{{route('front-show-product',['id'=> $product->id])}}">{{ $product['name_'.app()->getLocale()] }}</a></h6>-->
-                                @foreach($info as $inf)
-                                {{--<a href="https://wa.me/{{$inf->whatsapp}}?text=من فضلك اريد هذا {{ $product['name_'.app()->getLocale()] }}" class="hero-button">  @Lang('main.request product')</a> --}}
-                                    @php
-                                    $link = "https://wa.me/{$inf->whatsapp}?text=";
-                                    $link .= "السلام عليكم شركة الفارع عندي استفسار بخصوص المنتج";
-                                    $link .= "%0a%0a";
-                                    $link .= $product['name_'.app()->getLocale()];
-                                    $link .= "%0a%0a";
-                                    $link .= $product->nickname_main;
-                                    $link .= "%0a%0a";
-                                    $link .= request()->url();
-                                    @endphp
-                                    <a href="{{$link}}" class="hero-button" target="_blank" rel="nofollow">
-                                        @Lang('main.request product')
-                                    </a>
-                                @endforeach
-                                {{-- <span class="product-default-price"><del class="product-default-price-off">$30.12</del> $25.12</span> --}}
-                            </div>
+                        <div class="product-default-content">
+                            <!--<h6 class="product-default-link"><a href="{{route('front-show-product',['id'=> $product->id])}}">{{ $product['name_'.app()->getLocale()] }}</a></h6>-->
+                            @foreach($info as $inf)
+                            {{--<a href="https://wa.me/{{$inf->whatsapp}}?text=من فضلك اريد هذا {{ $product['name_'.app()->getLocale()] }}" class="hero-button"> @Lang('main.request product')</a> --}}
+                            @php
+                            $link = "https://wa.me/{$inf->whatsapp}?text=";
+                            $link .= "السلام عليكم شركة الفارع عندي استفسار بخصوص المنتج";
+                            $link .= "%0a%0a";
+                            $link .= $product['name_'.app()->getLocale()];
+                            $link .= "%0a%0a";
+                            $link .= $product->nickname_main;
+                            $link .= "%0a%0a";
+                            $link .= request()->url();
+                            @endphp
+                            <a href="{{$link}}" class="hero-button" target="_blank" rel="nofollow">
+                                @Lang('main.request product')
+                            </a>
+                            @endforeach
+                            {{-- <span class="product-default-price"><del class="product-default-price-off">$30.12</del> $25.12</span> --}}
+                        </div>
                         @else
+                        <div>
+                            <form class="row g-3 needs-validation" novalidate action="{{ route('front-store-inactive') }}" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <h3>@Lang('main.Tell me when its available')</h3>
+                                <div class="row">
 
-                            <div >
-                                <form class="row g-3 needs-validation" novalidate action="{{ route('front-store-inactive') }}" method="post" enctype="multipart/form-data">
-                                    @csrf
-                                    <h3>@Lang('main.Tell me when its available')</h3>
-                                    <div class="row">
-
-                                        <div class="col-lg-8 mb-20">
-                                            <div class="default-form-box">
-                                                <label>@Lang('main.Name')  <span>*</span></label>
-                                                <input name="name" type="text" class="form-control" id="validationCustom01"  required>
-                                            </div>
+                                    <div class="col-lg-8 mb-20">
+                                        <div class="default-form-box">
+                                            <label>@Lang('main.Name') <span>*</span></label>
+                                            <input name="name" type="text" class="form-control" id="validationCustom01" required>
                                         </div>
+                                    </div>
 
-                                        <div class="col-lg-8 mb-20">
-                                            <div class="default-form-box">
-                                                <label>@Lang('main.Email') <span>*</span></label>
-                                                <input name="email" type="text" class="form-control" id="validationCustom01"  required>
-                                            </div>
+                                    <div class="col-lg-8 mb-20">
+                                        <div class="default-form-box">
+                                            <label>@Lang('main.Email') <span>*</span></label>
+                                            <input name="email" type="text" class="form-control" id="validationCustom01" required>
                                         </div>
+                                    </div>
 
-                                        {{-- <div>
+                                    {{-- <div>
                                             <div class="default-form-box">
                                                 <label>@Lang('main.phone') <span>*</span></label>
                                                 <input name="phone" type="text" class="form-control" id="validationCustom01"  required>
                                             </div>
                                         </div> --}}
 
-                                        <div class="col-12 mb-20">
-                                            <button class="contact-submit-btn" type="submit">@Lang('main.Save')</button>
-                                        </div>
+                                    <div class="col-12 mb-20">
+                                        <button class="contact-submit-btn" type="submit">@Lang('main.Save')</button>
                                     </div>
-                                </form>
-                            </div>
-
+                                </div>
+                            </form>
+                        </div>
                         @endif
-
                     </div>
-
                 </div>
             </div>
         </div>
@@ -202,8 +168,8 @@
 </div>
 <!-- End Product Details Section -->
 
-
-<div class="product-details-content-tab-section section-inner-bg section-top-gap-20">
+@if(is_array($product->extra_data) && count($product->extra_data) > 0 )
+<div class="product-details-content-tab-section section-top-gap-20">
     <div class="container">
         <div class="row">
             <div class="col-12">
@@ -226,23 +192,23 @@
                                 <table class="table table-bordered">
                                     <tbody>
                                         @foreach ($product->extra_data as $data)
-                                            <tr class="tr-vertical-middle">
-                                                <td>
-                                                    <div class="product-price">
-                                                        <span class="product-price-reg">{{ $data['key'] }}</span>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="product-price">
-                                                        <span class="product-price-reg">{{ $data['value'] }}</span>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                        <tr class="tr-vertical-middle">
+                                            <td>
+                                                <div class="product-price">
+                                                    <span class="product-price-reg">{{ $data['key'] }}</span>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="product-price">
+                                                    <span class="product-price-reg">{{ $data['value'] }}</span>
+                                                </div>
+                                            </td>
+                                        </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
                                 @else
-                                    <div class="text-center h4">@Lang('main.Alternative numbers Not Available Now')</div>
+                                <div class="text-center h4">@Lang('main.Alternative numbers Not Available Now')</div>
                                 @endif
                             </div>
                         </div>
@@ -254,5 +220,6 @@
         </div>
     </div>
 </div>
+@endif
 
 @endsection
