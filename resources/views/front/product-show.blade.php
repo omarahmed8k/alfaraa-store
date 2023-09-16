@@ -1,15 +1,15 @@
 @extends('frontlayouts.layouts')
 
-@section('title') {{$product['name_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st}} @endsection
-@section('keywords') {{$product['name_'.app()->getLocale()] . ',' . $product->nickname_num . ',' . $product->nickname_main . ',' . $product->nickname_st}} @endsection
-@section('description') {{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st : $general->description . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st }} @endsection
+@section('title') {{$product['name_'.app()->getLocale()] . ' - ' . $product->nickname_num."".$product->nickname_st . ' - ' . $product->nickname_main}} @endsection
+@section('keywords') {{$product['name_'.app()->getLocale()] . ',' . $product->nickname_num."".$product->nickname_st . ',' . $product->nickname_main}} @endsection
+@section('description') {{ $product['dese_'.app()->getLocale()] ? $product['dese_'.app()->getLocale()] . ' - ' . $product->nickname_num."".$product->nickname_st . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st : $general->description . ' - ' .$product->nickname_num.''.$product->nickname_st . ' - ' . $product->nickname_main}} @endsection
 @section('meta')
 <meta property="og:site_name" content="{{$general->title}}" />
 
 <meta property="og:url" content="{{request()->url()}}" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="{{ $product['name_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st }}" />
-<meta property="og:description" content="{{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st : $general->description . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st }}" />
+<meta property="og:title" content="{{ $product['name_'.app()->getLocale()] . ' - ' . $product->nickname_num.''.$product->nickname_st . ' - ' . $product->nickname_main }}" />
+<meta property="og:description" content="{{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] . ' - ' . $product->nickname_num.''.$product->nickname_st . ' - ' . $product->nickname_main : $general->description . ' - ' . $product->nickname_num.''.$product->nickname_st . ' - ' . $product->nickname_main }}" />
 <meta property="og:image" itemprop="image" content="{{asset('images/'.$product->image)}}" />
 <meta property='og:locale' content='{{app()->getLocale() == "ar" ? "ar_EG" : "en_US"}}' />
 
@@ -22,7 +22,7 @@
 <meta name="twitter:domain" content="{{request()->getHost()}}" />
 <meta name="twitter:url" content="{{request()->url()}}" />
 <meta name="twitter:title" content="{{ $product['name_'.app()->getLocale()] }}" />
-<meta name="twitter:description" content="{{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st : $general->description . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st }}" />
+<meta name="twitter:description" content="{{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] . ' - ' . $product->nickname_num.''.$product->nickname_st . ' - ' . $product->nickname_main : $general->description . ' - ' .$product->nickname_num.''.$product->nickname_st . ' - ' . $product->nickname_main }}" />
 <meta name="twitter:image" content="{{asset('images/'.$product->image)}}" />
 
 <meta property="og:country-name" content="Saudi Arabia" />
@@ -99,22 +99,16 @@
                             @Lang('main.priceOnRequest')
                         </div>
                         <!--<p>{{ $product['dese_'.app()->getLocale()] }}</p>-->
-                        @if($product->nickname_num)
+                        @if($product->nickname_num || $product->nickname_st)
                         <h5 class="price">
                             <i class="fa fa-barcode"></i>
-                            {{ $product->nickname_num}}
+                            {{ $product->nickname_st}}{{ $product->nickname_num}}
                         </h5>
                         @endif
                         @if($product->nickname_main)
                         <h5 class="price">
                             <i class="fa fa-barcode"></i>
                             {{ $product->nickname_main}}
-                        </h5>
-                        @endif
-                        @if($product->nickname_st)
-                        <h5 class="price">
-                            <i class="fa fa-barcode"></i>
-                            {{ $product->nickname_st}}
                         </h5>
                         @endif
                     </div>
