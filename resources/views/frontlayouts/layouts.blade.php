@@ -167,7 +167,7 @@ $info = \App\Models\Info::first();
                             <!-- Header Main Menu -->
                             <div class="main-menu">
                                 <nav>
-                                    <a class="logo" href="{{ route('veiwhome') }}"><img src="{{asset('assetsfront/images/logo/logo-light.png')}}"></a>
+                                    <a class="logo" href="{{ route('veiwhome') }}"><img src="{{asset('assetsfront/images/logo/logo-light.png')}}" alt="logo"></a>
                                     <ul>
                                         <li>
                                             <a class="{{Route::current()->getName() == 'veiwhome' ? 'active main-menu-link' : '' }}" href="{{ route('veiwhome') }}">@Lang('main.Home')</a>
@@ -198,9 +198,9 @@ $info = \App\Models\Info::first();
                                         </li>
                                         <li>
                                             @if(app()->getLocale() == 'ar')
-                                            <a href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img class="user-sub-menu-in-icon" src="{{asset('assetsfront/images/icon/32.png')}}" alt="" width=25px> English</a>
+                                            <a href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img class="user-sub-menu-in-icon" src="{{asset('assetsfront/images/icon/32.png')}}" alt="language" width=25px> English</a>
                                             @else
-                                            <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}"><img class="user-sub-menu-in-icon" src="{{asset('assetsfront/images/icon/32s.png')}}" alt="" width=25px> العربية</a>
+                                            <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}"><img class="user-sub-menu-in-icon" src="{{asset('assetsfront/images/icon/32s.png')}}" alt="language" width=25px> العربية</a>
                                             @endif
                                         </li>
                                     </ul>
@@ -221,7 +221,7 @@ $info = \App\Models\Info::first();
                         <div class="col-12 d-flex justify-content-between align-items-center">
                             <div class="mobile-header--left">
                                 <a href="{{ route('veiwhome') }}" class="mobile-logo-link">
-                                    <img src="{{asset('assetsfront/images/logo/logo.png')}}" alt="" width="50%" class="mobile-logo-img">
+                                    <img src="{{asset('assetsfront/images/logo/logo.png')}}" alt="logo" width="50%" class="mobile-logo-img">
                                 </a>
                             </div>
                             <div class="mobile-header--right">
@@ -278,9 +278,9 @@ $info = \App\Models\Info::first();
                             <li><a href="https://alfaraaonline.com.sa/" target="_blank">@Lang('main.Website')</a></li>
                             <li><a href="{{route('front-contact')}}">@Lang('main.Contact us')</a></li>
                             @if(app()->getLocale() == 'ar')
-                            <li><a href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img class="user-sub-menu-link-icon" src="{{asset('assetsfront/images/icon/32.png')}}" alt="" width=25px> English</a></li>
+                            <li><a href="{{ LaravelLocalization::getLocalizedURL('en') }}"><img class="user-sub-menu-link-icon" src="{{asset('assetsfront/images/icon/32.png')}}" alt="language" width=25px> English</a></li>
                             @else
-                            <li><a href="{{ LaravelLocalization::getLocalizedURL('ar') }}"><img class="user-sub-menu-link-icon" src="{{asset('assetsfront/images/icon/32s.png')}}" alt="" width=25px> العربية</a></li>
+                            <li><a href="{{ LaravelLocalization::getLocalizedURL('ar') }}"><img class="user-sub-menu-link-icon" src="{{asset('assetsfront/images/icon/32s.png')}}" alt="language" width=25px> العربية</a></li>
                             @endif
                         </ul>
                     </div> <!-- End Mobile Menu Nav -->
@@ -316,7 +316,7 @@ $info = \App\Models\Info::first();
                         <div class="col-lg-3 col-md-12 col-sm-12">
                             <div class="footer-widget footer-widget-contact" data-aos="fade-up" data-aos-delay="0">
                                 <div class="footer-logo">
-                                    <a href="{{route('veiwhome')}}"><img src="{{asset('images/'.$general->image)}}" alt="" class="img-fluid"></a>
+                                    <a href="{{route('veiwhome')}}"><img src="{{asset('images/'.$general->image)}}" alt="logo" class="img-fluid"></a>
                                 </div>
                                 <div class="footer-contact">
                                     <p>{{$general->description}}</p>

@@ -70,21 +70,21 @@
                 <div class="product-details-gallery-area" data-aos="fade-up" data-aos-delay="0">
                     <div class="product-large-image product-large-image-horaizontal">
                         <div class="product-image-large-single zoom-image-hover">
-                            <img src="{{asset('images/'.$product->image)}}" alt="">
+                            <img loading="lazy" src="{{asset('images/'.$product->image)}}" alt="product image">
                         </div>
                         @foreach($product->images as $image)
                         <div class="product-image-large-single zoom-image-hover">
-                            <img src="{{$image->path_url}}" alt="">
+                            <img loading="lazy" src="{{$image->path_url}}" alt="product image">
                         </div>
                         @endforeach
                     </div>
                     <div class="product-image-thumb product-image-thumb-horizontal pos-relative">
                         <div class="zoom-active product-image-thumb-single">
-                            <img class="img-fluid" src="{{asset('images/'.$product->image)}}" alt="">
+                            <img loading="lazy" class="img-fluid" src="{{asset('images/'.$product->image)}}" alt="product image">
                         </div>
                         @foreach($product->images as $image)
                         <div class="product-image-thumb-single">
-                            <img class="img-fluid" src="{{$image->path_url}}" alt="">
+                            <img loading="lazy" class="img-fluid" src="{{$image->path_url}}" alt="product image">
                         </div>
                         @endforeach
                     </div>
@@ -94,23 +94,11 @@
                 <div class="product-details-content-area" data-aos="fade-up" data-aos-delay="200">
                     <!-- Start  Product Details Text Area-->
                     <div class="product-details-text">
-                        <h4 class="title">{{ $product['name_'.app()->getLocale()] }}</h4>
-                        <div class="price">
-                            @Lang('main.priceOnRequest')
-                        </div>
-                        <!--<p>{{ $product['dese_'.app()->getLocale()] }}</p>-->
                         @if($product->nickname_num || $product->nickname_st)
-                        <h5 class="price">
-                            <i class="fa fa-barcode"></i>
-                            {{ $product->nickname_st}}{{ $product->nickname_num}}
-                        </h5>
+                        <div class="price">{{ $product->nickname_st}}{{ $product->nickname_num}}</div>
                         @endif
-                        @if($product->nickname_main)
-                        <h5 class="price">
-                            <i class="fa fa-barcode"></i>
-                            {{ $product->nickname_main}}
-                        </h5>
-                        @endif
+                        <h4 class="title">{{ $product['name_'.app()->getLocale()] }} {{ $product->nickname_main}}</h4>
+                        <div class="price">@Lang('main.priceOnRequest')</div>
                     </div>
                     <!-- End  Product Details Text Area-->
                     <div class="price">
