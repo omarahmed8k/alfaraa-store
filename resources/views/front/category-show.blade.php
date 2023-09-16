@@ -45,14 +45,14 @@
                 <div class="sort-product-tab-wrapper">
                     <div class="container">
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-12 p-0">
                                 <div class="tab-content tab-animate-zoom">
                                     <!-- Start Grid View Product -->
                                    
                                     <div class="tab-pane active show sort-layout-single" id="layout-4-grid">
                                         <div class="row">
                                         @foreach($products as $product)
-                                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                            <div class="col-xl-3 col-lg-4 col-sm-6 col-6 my-5">
                                                 <!-- Start Product Defautlt Single -->
                                                 <div class="product-default-single border-around" data-aos="fade-up"  data-aos-delay="0">
                                                     <div class="product-img-warp">

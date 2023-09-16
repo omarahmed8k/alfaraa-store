@@ -100,7 +100,7 @@
      ***********************************************/
     $('.product-default-slider-3grids-1row').slick({
         arrows: true,
-        infinite: false,
+        infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
         rtl:window.lang == 'ar',
@@ -126,7 +126,7 @@
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 1,
+                    slidesToShow: 2,
                 }
             },
         ]

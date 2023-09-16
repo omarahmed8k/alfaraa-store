@@ -43,6 +43,36 @@
 
 </div> <!-- ...:::: End Hero Area Section:::... -->
 
+<!-- ...:::: Start Category Section:::... 
+<div class="features-section section-top-gap-100">
+
+    <div class="section-content-gap">
+        <div class="container">
+            <div class="row">
+                <div class="section-content text-center d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column">
+                    <h3 class="section-title text-center" data-aos="fade-up" data-aos-delay="0">@Lang('main.Catagories')</h3>
+                    <ul class="tablist nav product-tab-btn" data-aos="fade-up" data-aos-delay="400">
+                        <li>
+                            <a class="nav-link active" href="{{route('front-category')}}">
+                                <span>@Lang('main.showMore')</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="banner-wrapper">
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+</div>
+-->
+
 @if($general->products == 'yes')
 <!-- ...:::: Start Banner Section:::... -->
 <div class="category-banner banner-section section-top-gap-100">
@@ -195,7 +225,7 @@
         <div class="container">
             <div class="row">
                 <div class="section-content text-center d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column">
-                <h3 class="section-title" data-aos="fade-up" data-aos-delay="0">@Lang('main.Best selling items')</h3>
+                    <h3 class="section-title" data-aos="fade-up" data-aos-delay="0">@Lang('main.Best selling items')</h3>
                     <ul class="tablist nav product-tab-btn" data-aos="fade-up" data-aos-delay="400">
                         <li>
                             <a class="nav-link active" href="{{route('front-category')}}">
@@ -207,7 +237,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- Start Tab Wrapper -->
     <div class="product-tab-wrapper" data-aos="fade-up" data-aos-delay="50">
         <div class="container">

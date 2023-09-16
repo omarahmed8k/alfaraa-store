@@ -398,6 +398,14 @@ $info = \App\Models\Info::first();
                                 <li><a href="{{$info->snapchat}}" target="_ blank" class="youtube"><i class="fa fa-snapchat"></i></a></li>
                                 <li><a href="https://wa.me/{{$info->whatsapp}}?text=مرحبا" target="_ blank" class="pinterest"><i class="fa fa-whatsapp"></i></a></li>
                                 <li><a href="{{$info->instagram}}" target="_ blank" class="instagram"><i class="fa fa-instagram"></i></a></li>
+                                <li>
+                                    <a href="https://www.tiktok.com/@alfaraa00" target="_ blank" class="tiktok">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                                            <path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z" />
+                                        </svg>
+                                    </a>
+                                </li>
+                                <li><a href="https://twitter.com/alfaraa0" target="_ blank" class="twitter"><i class="fa fa-twitter"></i></a></li>
                             </ul>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 @extends('frontlayouts.layouts')
 
-@section('title') {{$product['name_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st}}
-@endsection
+@section('title') {{$product['name_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st}} @endsection
+@section('keywords') {{$product['name_'.app()->getLocale()] . ',' . $product->nickname_num . ',' . $product->nickname_main . ',' . $product->nickname_st}} @endsection
 @section('description') {{ $product['dese_'.app()->getLocale()] ?  $product['dese_'.app()->getLocale()] . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st : $general->description . ' - ' . $product->nickname_num . ' - ' . $product->nickname_main . ' - ' . $product->nickname_st }} @endsection
 @section('meta')
 <meta property="og:site_name" content="{{$general->title}}" />
@@ -95,12 +95,28 @@
                     <!-- Start  Product Details Text Area-->
                     <div class="product-details-text">
                         <h4 class="title">{{ $product['name_'.app()->getLocale()] }}</h4>
-                        <div class="price">السعر عند التواصل</div>
+                        <div class="price">
+                            @Lang('main.priceOnRequest')
+                        </div>
                         <!--<p>{{ $product['dese_'.app()->getLocale()] }}</p>-->
-                        <h5 class="title">
+                        @if($product->nickname_num)
+                        <h5 class="price">
                             <i class="fa fa-barcode"></i>
-                            <span>{{ $product->nickname_num ? $product->nickname_num : '' }} - {{ $product->nickname_main ? $product->nickname_main : '' }} - {{ $product->nickname_st ? $product->nickname_st : '' }}</span>
+                            {{ $product->nickname_num}}
                         </h5>
+                        @endif
+                        @if($product->nickname_main)
+                        <h5 class="price">
+                            <i class="fa fa-barcode"></i>
+                            {{ $product->nickname_main}}
+                        </h5>
+                        @endif
+                        @if($product->nickname_st)
+                        <h5 class="price">
+                            <i class="fa fa-barcode"></i>
+                            {{ $product->nickname_st}}
+                        </h5>
+                        @endif
                     </div>
                     <!-- End  Product Details Text Area-->
                     <div class="price">

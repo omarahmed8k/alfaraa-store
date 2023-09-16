@@ -14838,6 +14838,13 @@ input {
     background: #007bb6;
 }
 
+.tiktok {
+    background: #000;
+}
+.tiktok svg{
+    fill: #fff;
+}
+
 /*****************************
 Base - Utilities
 *****************************/
@@ -15954,6 +15961,7 @@ Components - Hero
     align-items: center;
     background: #fff;
     z-index: 0;
+    margin-bottom: 100px;
 }
 
 .hero-area::after {
@@ -16388,8 +16396,24 @@ Components - Products
 
 .product-img-warp {
     width: 100%;
+    height: 125px;
     position: relative;
 }
+
+.product-img-warp a{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.product-img-warp a img{
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
 
 .product-action-icon-link {
     position: absolute;
@@ -16787,7 +16811,6 @@ Layout - Offcanvas
 }
 
 .company-logo-single {
-    cursor: pointer;
     opacity: 0.3;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
@@ -17079,6 +17102,7 @@ Components - Breadcrumb
 *****************************/
 .breadcrumb-section {
     position: relative;
+    margin-bottom: 100px;
 }
 .breadcrumb-wrapper {
     padding-top: 100px;
@@ -17300,6 +17324,7 @@ Components - Page Pagination
 *****************************/
 .page-pagination {
     margin-top: 42px;
+    margin-bottom: 50px;
 }
 .page-pagination li {
     display: inline-block;
@@ -17822,6 +17847,17 @@ Components - Slider Style
     opacity: 0;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
+}
+
+.default-slider-arrow{
+        height: 40px;
+        width: 40px;
+        background: #00000050;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        margin: 0 10px;
 }
 
 .product-default-slider {
@@ -18417,7 +18453,8 @@ Pages - Product Details
     display: block;
     font-size: 20px;
     color: #666;
-    margin: 10px 0;    
+    margin: 10px 0;
+    margin-bottom: 22px;
     line-height: 1.5;
 }
 .product-details-text .price del {
@@ -18426,11 +18463,19 @@ Pages - Product Details
 }
 
 .product-details-content-area{
-    min-height: 400px;
+    min-height: 350px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+    .product-details-content-area{
+        margin-top: 50px;
+        height: auto;
+        min-height: auto;
+    }
 }
 
 .product-details-content-area-sticky {
@@ -18517,8 +18562,9 @@ Pages - Product Details
 .product-large-image-vertical {
     overflow: hidden;
     border: 1px solid #eee;
-    height: 400px;
+    height: 350px;
     width: 100%;
+    border-radius: 5px;
 }
 .product-large-image-horaizontal .slick-list,
 .product-large-image-vertical .slick-list {
@@ -18560,6 +18606,9 @@ Pages - Product Details
 }
 .product-image-thumb img {
     border: 1px solid #eee;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .product-image-thumb.product-image-thumb-horizontal {
     margin-top: 15px;
@@ -18573,6 +18622,7 @@ Pages - Product Details
 .product-image-thumb.product-image-thumb-horizontal .slick-slide {
     margin-left: 7.5px;
     margin-right: 7.5px;
+    height: 50px;
 }
 .product-image-thumb.product-image-thumb-vertical {
     width: 20%;
@@ -18811,7 +18861,7 @@ Pages - Product Details
 
 .product-details-content-tab-wrapper {
     background: white;
-    padding: 0 30px;
+    padding: 0;
 }
 
 .product-details-content-tab-btn {
@@ -20646,6 +20696,9 @@ Layout - Modal
 }
 .product-image-thumb img {
     border: 1px solid #eee;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 .product-image-thumb.modal-product-image-thumb {
     margin-top: 15px;
@@ -20809,6 +20862,12 @@ Layout - Footer
     color: #fff;
 }
 
+@media (max-width:992px) {
+    .footer-widget-title {
+        display: none;
+    }
+}
+
 .footer-widget-subscribe {
     margin-top: 30px;
 }
@@ -20846,6 +20905,15 @@ Layout - Footer
     margin-bottom: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #333;
+}
+@media (max-width: 992px) {
+    .footer-menu{
+        border-bottom: 1px solid #333;
+    }
+.footer-menu:last-child {
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
 }
 
 .footer-menu-nav > li {

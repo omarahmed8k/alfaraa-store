@@ -9,19 +9,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 d-flex justify-content-between justify-content-md-between  align-items-center flex-md-row flex-column">
-                    <h3 class="breadcrumb-title">@Lang('main.Products')</h3>
+                    <h3 class="breadcrumb-title">@Lang('main.Categories')</h3>
                 </div>
             </div>
         </div>
     </div>
 </div> <!-- ...:::: End Breadcrumb Section:::... -->
 
-<!-- ...:::: Start Product Catagory Section:::... -->
-<div class="product-catagory-section section-top-gap-100">
-</div> <!-- ...:::: End Product Catagory Section:::... -->
-
 <!-- ...:::: Start Banner Section:::... -->
-<div class="category-banner banner-section section-top-gap-100">
+<div class="category-banner banner-section my-5">
     <!-- Start Banner Wrapper -->
     <div class="banner-wrapper">
         <div class="container">
