@@ -157,7 +157,11 @@
                                         </a>
                                         <div class="product-action-icon-link">
                                             <ul>
-                                                <!-- <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-eye"></i></a></li> -->
+                                                <li>
+                                                    <a href="#" id="add-to-cart" class="offcanvas-toggle" data-id="{{$product->id}}" data-name="{{$product['name_'.app()->getLocale()]}}" data-image="{{asset('images/'.$product->image)}}" data-nickname-main="{{$product->nickname_main}}" data-nickname-st="{{$product->nickname_st}}" data-nickname-num="{{$product->nickname_num}}">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -180,9 +184,6 @@
                                         <a href="{{$link}}" class="hero-button"> @Lang('main.request product')</a>
                                         @endforeach
                                         <!-- <span class="product-default-price"><del class="product-default-price-off">$30.12</del> $25.12</span> -->
-                                    </div>
-                                    <div id="add-to-cart" class="hero-button offcanvas-toggle w-100 text-center second-button" data-id="{{$product->id}}" data-name="{{$product['name_'.app()->getLocale()]}}" data-image="{{asset('images/'.$product->image)}}" data-nickname-main="{{$product->nickname_main}}" data-nickname-st="{{$product->nickname_st}}" data-nickname-num="{{$product->nickname_num}}">
-                                        @Lang('main.addToCart')
                                     </div>
                                 </div>
                                 @endforeach
@@ -258,8 +259,11 @@
                                         </a>
                                         <div class="product-action-icon-link">
                                             <ul>
-
-                                                <!-- <li><a href="#" data-bs-toggle="modal" data-bs-target="#modalQuickview"><i class="icon-eye"></i></a></li> -->
+                                                <li>
+                                                    <a href="#" id="add-to-cart" class="offcanvas-toggle" data-id="{{$product->id}}" data-name="{{$product['name_'.app()->getLocale()]}}" data-image="{{asset('images/'.$product->image)}}" data-nickname-main="{{$product->nickname_main}}" data-nickname-st="{{$product->nickname_st}}" data-nickname-num="{{$product->nickname_num}}">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -282,9 +286,6 @@
                                         {{--<a href="https://wa.me/{{$inf->whatsapp}}?text=من فضلك اريد هذا {{ $product['name_'.app()->getLocale()] }}" class="hero-button"> @Lang('main.request product')</a>--}}
                                         <a href="{{$link}}" class="hero-button"> @Lang('main.request product')</a>
                                         @endforeach <!-- <span class="product-default-price"><del class="product-default-price-off">$30.12</del> $25.12</span> -->
-                                    </div>
-                                    <div id="add-to-cart" class="hero-button offcanvas-toggle w-100 text-center second-button" data-id="{{$product->id}}" data-name="{{$product['name_'.app()->getLocale()]}}" data-image="{{asset('images/'.$product->image)}}" data-nickname-main="{{$product->nickname_main}}" data-nickname-st="{{$product->nickname_st}}" data-nickname-num="{{$product->nickname_num}}">
-                                        @Lang('main.addToCart')
                                     </div>
                                 </div>
                                 @endforeach
