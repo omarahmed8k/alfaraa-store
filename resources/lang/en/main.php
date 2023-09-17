@@ -193,4 +193,7 @@ return [
     "branche6Phone" => "0509304858",
     "rights" => "All Rights Reserved ©",
     "priceOnRequest" => "Price On Request",
+    "Cart" => "Cart",
+    "addToCart" => "Add To Cart",
+    "Order" => "Order Now",
 ];

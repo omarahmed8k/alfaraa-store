@@ -157,6 +157,11 @@ $info = \App\Models\Info::first();
 
 <body>
     <div id="content">
+
+        <div id="cart-icon" class="offcanvas-toggle cart-icon">
+            <i class="icon-shopping-cart"></i>
+            <span class="count-style" id="cart-count">0</span>
+        </div>
         <!-- ...:::: Start Header Section:::... -->
         <header class="header-section d-lg-block d-none">
             <!-- Start Bottom Area -->
@@ -291,21 +296,25 @@ $info = \App\Models\Info::first();
 
         <!-- ...:::: Start Offcanvas Addcart Section :::... -->
         <div id="offcanvas-add-cart" class="offcanvas offcanvas-rightside offcanvas-add-cart-section">
-            <!-- Start Offcanvas Header -->
             <div class="offcanvas-header text-end">
                 <button class="offcanvas-close"><i class="fa fa-times"></i></button>
-            </div> <!-- End Offcanvas Header -->
+            </div>
 
-            <!-- Start  Offcanvas Addcart Wrapper -->
-            <!-- End  Offcanvas Addcart Wrapper -->
+            <h4>
+                @Lang('main.Cart')
+            </h4>
 
-        </div> <!-- ...:::: End  Offcanvas Addcart Section :::... -->
+            <ul class="cart-items" id="cart-items" class="offcanvas-add-cart-wrap">
+            </ul>
 
-        <!-- ...:::: Start Offcanvas Mobile Menu Section:::... -->
-        <!-- ...:::: End Offcanvas Mobile Menu Section:::... -->
+            <a id="cart-order-whatsapp" href="" class="hero-button mt-5 text-center" target="_blank" rel="nofollow">
+                <i class="fa fa-whatsapp"></i>
+                @Lang('main.Order')
+            </a>
+
+        </div>
+
         @yield('content')
-
-
 
         <!-- ...:::: Start Footer Section:::... -->
         <footer class="footer-section">
@@ -460,6 +469,157 @@ $info = \App\Models\Info::first();
         window.lang = "{{app()->getLocale()}}";
     </script>
     <script src="{{asset('assetsfront/js/main.js?v2.06')}}"></script>
+
+    <script>
+        const addToCartButton = document.querySelectorAll('#add-to-cart');
+        const toggleCart = document.getElementById('offcanvas-add-cart');
+        const cartIcon = document.getElementById('cart-icon');
+        const cartItems = document.getElementById('cart-items');
+        const products = JSON.parse(localStorage.getItem('products')) || [];
+        const cartOrderWhatsapp = document.getElementById('cart-order-whatsapp');
+        const cartCount = document.getElementById('cart-count');
+
+        $(cartCount).text(products.length);
+
+        if (products.length <= 0) {
+            $(cartOrderWhatsapp).hide();
+        } else {
+            $(cartOrderWhatsapp).show();
+        }
+
+        function renderProducts() {
+            products?.forEach(function(product) {
+                const li = document.createElement('li');
+                li.classList.add('offcanvas-add-cart-list');
+                li.innerHTML = `
+                    <div class="cart-item">
+                        <img src="${product.image}" alt="Cart Product Image">
+                        <a href="/product/${product.id}">
+                            ${product.name} ${product.data_nickname_main}
+                            <br>
+                            ${product.data_nickname_st}${product.data_nickname_num}
+                        </a>
+                        <div onclick="removeFromCart(${product.id})" class="cart-remove">
+                            <i class="fa fa-times"></i>
+                        </div>
+                    </div>
+                `;
+                cartItems.appendChild(li);
+            });
+        }
+
+        renderProducts();
+
+        function removeFromCart(id) {
+            // remove product from cart
+            const productIndex = products.findIndex(function(p) {
+                return p.id == id;
+            });
+            products.splice(productIndex, 1);
+            localStorage.setItem('products', JSON.stringify(products));
+
+            // update cart count
+            const cartCountValue = parseInt($(cartCount).text());
+            $(cartCount).text(cartCountValue - 1);
+
+            // remove product from cart list
+            const cartItems = $('#cart-items');
+            const cartItemsList = $(cartItems).find('.offcanvas-add-cart-list');
+            cartItemsList.each(function() {
+                const productId = $(this).find('.cart-remove').attr('onclick').split('(')[1].split(')')[0];
+                if (productId == id) $(this).remove();
+            });
+
+            if (products.length <= 0) {
+                $(cartOrderWhatsapp).hide();
+            } else {
+                $(cartOrderWhatsapp).show();
+            }
+        }
+
+        $(cartIcon).click(function() {
+            $(toggleCart).addClass('offcanvas-open');
+        });
+
+        $(addToCartButton).click(function() {
+            $(toggleCart).addClass('offcanvas-open');
+
+            const product = {
+                id: $(this).attr('data-id'),
+                name: $(this).attr('data-name'),
+                image: $(this).attr('data-image'),
+                data_nickname_main: $(this).attr('data-nickname-main'),
+                data_nickname_st: $(this).attr('data-nickname-st'),
+                data_nickname_num: $(this).attr('data-nickname-num'),
+            };
+
+            const productIndex = products.findIndex(function(p) {
+                return p.id == product.id;
+            });
+            console.log(productIndex)
+            if (productIndex == -1) {
+                products.push(product)
+                const cartCountValue = parseInt($(cartCount).text());
+                $(cartCount).text(cartCountValue + 1);
+            } else {
+                products.splice(productIndex, 1);
+                products.push(product)
+            }
+            localStorage.setItem('products', JSON.stringify(products));
+
+            // add product to cart list
+            const cartItems = $('#cart-items');
+            const cartItemsList = $(cartItems).find('.offcanvas-add-cart-list');
+            cartItemsList.each(function() {
+                const productId = $(this).find('.cart-remove').attr('onclick').split('(')[1].split(')')[0];
+                if (productId == product.id) $(this).remove();
+            });
+
+            const li = document.createElement('li');
+            li.classList.add('offcanvas-add-cart-list');
+            li.innerHTML = `
+                <div class="cart-item">
+                    <img src="${product.image}" alt="Cart Product Image">
+                    <a href="/product/${product.id}">
+                        ${product.name} ${product.data_nickname_main}
+                        <br>
+                        ${product.data_nickname_st}${product.data_nickname_num}
+                    </a>
+                    <div onclick="removeFromCart(${product.id})" class="cart-remove">
+                        <i class="fa fa-times"></i>
+                    </div>
+                </div>
+            `;
+            cartItems.prepend(li);
+
+            // update cart order whatsapp link
+            const baseUrl = window.location.origin;
+            const productsIds = products.map(function(p) {
+                return `${p.name} ${p.data_nickname_main} ${baseUrl}/product/${p.id}`;
+            });
+            const productsIdsString = productsIds.join('%0A');
+            const url = `https://wa.me/{{$info->whatsapp}}?text=مرحبا%20أريد%20طلب%20المنتجات%20التالية%20%0A${productsIdsString}`;
+            $(cartOrderWhatsapp).attr('href', url);
+
+            if (products.length <= 0) {
+                $(cartOrderWhatsapp).hide();
+            } else {
+                $(cartOrderWhatsapp).show();
+            }
+        });
+
+        $(cartOrderWhatsapp).click(function() {
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+            const baseUrl = window.location.origin;
+            const productsIds = products.map(function(p) {
+                return `${p.name} ${p.data_nickname_main} ${baseUrl}/product/${p.id}`;
+            });
+            const productsIdsString = productsIds.join('%0A');
+            const url = `https://wa.me/{{$info->whatsapp}}?text=مرحبا%20أريد%20طلب%20المنتجات%20التالية%20%0A${productsIdsString}`;
+            $(this).attr('href', url);
+        });
+    </script>
+
     @include('sweetalert::alert')
 </body>
 

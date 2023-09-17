@@ -12,14 +12,14 @@
                 <div class="col-8 d-flex justify-content-between justify-content-md-between  align-items-center flex-md-row flex-column">
                     <h3 class="breadcrumb-title">@Lang('main.Products')</h3>
                 </div>
-                
-                  <div class="col-3 text-end">
-                        <!-- Start Header Action Icon -->
-                        <ul class="header-action-icon">
-                            {{--<a href="{{ route('front-category') }}" class="hero-button">@Lang('main.Categories')</a>--}}
 
-                        </ul> <!-- End Header Action Icon -->
-                    </div>
+                <div class="col-3 text-end">
+                    <!-- Start Header Action Icon -->
+                    <ul class="header-action-icon">
+                        {{--<a href="{{ route('front-category') }}" class="hero-button">@Lang('main.Categories')</a>--}}
+
+                    </ul> <!-- End Header Action Icon -->
+                </div>
             </div>
         </div>
     </div>
@@ -31,7 +31,7 @@
         <div class="row flex-column-reverse flex-lg-row">
             <div class="col-lg-12">
                 <!-- Start Shop Product Sorting Section -->
-                <div class="shop-sort-section" data-aos="fade-up"  data-aos-delay="0">
+                <div class="shop-sort-section" data-aos="fade-up" data-aos-delay="0">
                     <div class="container">
                         <div class="row">
                             <!-- Start Sort Wrapper Box -->
@@ -43,7 +43,7 @@
                                         <!-- <li><a class="nav-link" data-bs-toggle="tab" href="#layout-list"><img src="assets/images/icon/bkg_list.png" alt=""></a></li> -->
                                     </ul>
                                 </div> <!-- End Sort tab Button -->
-                
+
                             </div> <!-- Start Sort Wrapper Box -->
                         </div>
                     </div>
@@ -56,27 +56,33 @@
                             <div class="col-12 p-0">
                                 <div class="tab-content tab-animate-zoom">
                                     <!-- Start Grid View Product -->
-                                   
+
                                     <div class="tab-pane active show sort-layout-single" id="layout-4-grid">
                                         <div class="row">
-                                        @foreach($products as $product)
+                                            @foreach($products as $product)
                                             <div class="col-xl-3 col-lg-4 col-sm-6 col-6 my-5">
                                                 <!-- Start Product Defautlt Single -->
-                                                <div class="product-default-single border-around" data-aos="fade-up"  data-aos-delay="0">
+                                                <div class="product-default-single border-around" data-aos="fade-up" data-aos-delay="0">
                                                     <div class="product-img-warp">
                                                         <a href="{{route('front-show-product',['id'=> $product->id])}}" class="product-default-img-link">
                                                             <img src="{{asset('images/'.$product->image)}}" alt="" class="product-default-img img-fluid">
                                                         </a>
                                                         <div class="product-action-icon-link">
-                                                          
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="#" id="add-to-cart" class="offcanvas-toggle" data-id="{{$product->id}}" data-name="{{$product['name_'.app()->getLocale()]}}" data-image="{{asset('images/'.$product->image)}}" data-nickname-main="{{$product->nickname_main}}" data-nickname-st="{{$product->nickname_st}}" data-nickname-num="{{$product->nickname_num}}">
+                                                                        <i class="fa fa-shopping-cart"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
                                                         </div>
                                                     </div>
                                                     <div class="product-default-content">
                                                         <h6 class="product-default-link">
-                                                            <a href="{{route('front-show-product',['id'=> $product->id])}}">{{ $product['name_'.app()->getLocale()] }}</a></h6>
+                                                            <a href="{{route('front-show-product',['id'=> $product->id])}}">{{ $product['name_'.app()->getLocale()] }}</a>
+                                                        </h6>
+                                                        <div class="flex">
                                                             @foreach($info as $inf)
-                                                            {{--<a href="https://wa.me/{{$inf->whatsapp}}?text=من فضلك اريد هذا {{ $product['name_'.app()->getLocale()] }}" class="hero-button">  @Lang('main.request product')</a>--}}
-                                                            
                                                             @php
                                                             $link = "https://wa.me/{$inf->whatsapp}?text=";
                                                             $link .= "السلام عليكم";
@@ -93,25 +99,26 @@
                                                                 @Lang('main.request product')
                                                             </a>
                                                             @endforeach
+                                                        </div>
                                                     </div>
-                                                </div>                                
+                                                </div>
                                                 <!-- End Product Defautlt Single -->
                                             </div>
                                             @endforeach
-                                            <div class="page-pagination text-center" data-aos="fade-up"  data-aos-delay="0">
-                                            {{$products->links()}}
+                                            <div class="page-pagination text-center" data-aos="fade-up" data-aos-delay="0">
+                                                {{$products->links()}}
                                             </div>
-                                          
+
                                         </div>
                                     </div> <!-- End Grid View Product -->
-                                    
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div> <!-- End Tab Wrapper -->
 
-            
+
             </div> <!-- End Shop Product Sorting Section  -->
         </div>
     </div>

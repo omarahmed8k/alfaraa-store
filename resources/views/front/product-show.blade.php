@@ -102,11 +102,12 @@
                     </div>
                     <!-- End  Product Details Text Area-->
                     <div class="price">
+                        <div id="add-to-cart" class="hero-button offcanvas-toggle w-100 text-center" data-id="{{$product->id}}" data-name="{{$product['name_'.app()->getLocale()]}}" data-image="{{asset('images/'.$product->image)}}" data-nickname-main="{{$product->nickname_main}}" data-nickname-st="{{$product->nickname_st}}" data-nickname-num="{{$product->nickname_num}}">
+                            @Lang('main.addToCart')
+                        </div>
                         @if($product->status == 'active')
                         <div class="product-default-content">
-                            <!--<h6 class="product-default-link"><a href="{{route('front-show-product',['id'=> $product->id])}}">{{ $product['name_'.app()->getLocale()] }}</a></h6>-->
                             @foreach($info as $inf)
-                            {{--<a href="https://wa.me/{{$inf->whatsapp}}?text=من فضلك اريد هذا {{ $product['name_'.app()->getLocale()] }}" class="hero-button"> @Lang('main.request product')</a> --}}
                             @php
                             $link = "https://wa.me/{$inf->whatsapp}?text=";
                             $link .= "السلام عليكم شركة الفارع عندي استفسار بخصوص المنتج";
@@ -121,7 +122,6 @@
                                 @Lang('main.request product')
                             </a>
                             @endforeach
-                            {{-- <span class="product-default-price"><del class="product-default-price-off">$30.12</del> $25.12</span> --}}
                         </div>
                         @else
                         <div>
@@ -219,5 +219,4 @@
     </div>
 </div>
 @endif
-
 @endsection
