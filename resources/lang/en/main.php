@@ -97,7 +97,6 @@ return [
     'nameproperty' => 'Name property',
     'nametenant' => 'Name tenant',
     'Rentermobile' => 'Renter mobile',
-
     'saturday' => 'Saturday',
     'sunday' => 'Sunday',
     'monday' => 'Monday',
@@ -106,8 +105,6 @@ return [
     'thursday' => 'Thursday',
     'friday' => 'Friday',
     'There is no' => 'There is no',
-
-
     'no repeat' => 'no repeat',
     'every hour' => 'every hour',
     'every day' => 'every day',
@@ -125,8 +122,6 @@ return [
     'To communicate' => 'To communicate',
     'advanced_repeat_number' => 'Advanced repeat number',
     'advanced_repeat_type' => 'Advanced repeat type',
-
-
     'History of rental solutions' => 'History of rental solutions',
     'Details of the appointment' => 'Details of the appointment',
     'Block number' => 'Block number',
@@ -134,8 +129,6 @@ return [
     'Iterations' => 'Iterations',
     'Property_appointments_active' => 'Property appointments',
     'remaining time' => 'Remaining time',
-
-
     'Shop now' => 'Shop now',
     'Products' => 'Products',
     'Contact us' => 'Contact us',
@@ -196,4 +189,18 @@ return [
     "Cart" => "Cart",
     "addToCart" => "Add To Cart",
     "Order" => "Order Now",
+    "WhyUs" => "Why Us",
+    "srv1Title" => "Extensive Experience",
+    "srv1Desc" => "With over 20 years of experience in providing automotive parts, truck parts, and heavy equipment, we understand customer needs and effciently meet these needs.",
+    "srv2Title" => "High Quality",
+    "srv2Desc" => "We guarantee high-quality spare parts and reliable products by collaborating with trusted suppliers and major international brands.",
+    "srv3Title" => "Wide Product Range",
+    "srv3Desc" => "Our inventory includes a wide variety of automotive, truck, and heavy equipment parts from renowned global brands such as Mercedes-Benz, Isuzu, Volvo, Mitsubishi, MAN, Caterpillar, and more, making it easy for our customers to find the products they need.",
+    "srv4Title" => "Repair and Maintenance Services",
+    "srv4Desc" => "In addition to spare parts sales, we offer professional car and truck repair and maintenance services. Our trained team effciently handles maintenance and repairs to the highest standards.",
+    "srv5Title" => "Excellent Buying Experience",
+    "srv5Desc" => "Customer satisfaction during the purchasing process is paramount to us. Our user-friendly online store streamlines the buying experience, and we offer fast, reliable spare parts delivery services throughout the kingdom.",
+    "srv6Title" => "Technical Consultations",
+    "srv6Desc" => "We offer technical consultations to assist our customers in choosing the right parts and understanding how to maintain the performance of their vehicles.",
+    "aboutCompany" => "Al-Faraa International Trading Company specializes in both wholesale and retail sales of automotive parts, trucks, and heavy equipment. Additionally, we offer professional car repair and maintenance services to ensure our customers' vehicles receive the necessary care and attention. Since our inception, we have remained dedicated to supplying high-quality spare parts for renowned global brands like Mercedes-Benz, Isuzu, Volvo, Mitsubishi, MAN, Caterpillar, and more. To enhance convenience for our customers, we have established an online store that facilitates spare parts ordering and delivery services across the kingdom.",
 ];

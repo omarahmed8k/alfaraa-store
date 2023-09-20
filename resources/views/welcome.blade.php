@@ -43,18 +43,17 @@
 
 </div> <!-- ...:::: End Hero Area Section:::... -->
 
-<!-- ...:::: Start Category Section:::... 
 <div class="features-section section-top-gap-100">
 
     <div class="section-content-gap">
         <div class="container">
             <div class="row">
                 <div class="section-content text-center d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column">
-                    <h3 class="section-title text-center" data-aos="fade-up" data-aos-delay="0">@Lang('main.Catagories')</h3>
+                    <h3 class="section-title text-center" data-aos="fade-up" data-aos-delay="0">@Lang('main.WhyUs')</h3>
                     <ul class="tablist nav product-tab-btn" data-aos="fade-up" data-aos-delay="400">
                         <li>
-                            <a class="nav-link active" href="{{route('front-category')}}">
-                                <span>@Lang('main.showMore')</span>
+                            <a class="nav-link active" href="{{route('front-faq')}}">
+                                <span>@Lang('main.FAQ')</span>
                             </a>
                         </li>
                     </ul>
@@ -62,16 +61,92 @@
             </div>
         </div>
     </div>
-    
-    <div class="banner-wrapper">
-        <div class="container">
-            <div class="row">
 
+    <div class="services">
+        <div class="container">
+            <div class="services-container">
+                <div class="srv-box">
+                    <div class="srv-icon">
+                        <i class="fa fa-briefcase"></i>
+                    </div>
+                    <div class="text">
+                        <h3>
+                            @Lang('main.srv1Title')
+                        </h3>
+                        <p>
+                            @Lang('main.srv1Desc')
+                        </p>
+                    </div>
+                </div>
+                <div class="srv-box">
+                    <div class="srv-icon">
+                        <i class="fa fa-check"></i>
+                    </div>
+                    <div class="text">
+                        <h3>
+                            @Lang('main.srv2Title')
+                        </h3>
+                        <p>
+                            @Lang('main.srv2Desc')
+                        </p>
+                    </div>
+                </div>
+                <div class="srv-box">
+                    <div class="srv-icon">
+                        <i class="fa fa-cubes"></i>
+                    </div>
+                    <div class="text">
+                        <h3>
+                            @Lang('main.srv3Title')
+                        </h3>
+                        <p>
+                            @Lang('main.srv3Desc')
+                        </p>
+                    </div>
+                </div>
+                <div class="srv-box">
+                    <div class="srv-icon">
+                        <i class="fa fa-wrench"></i>
+                    </div>
+                    <div class="text">
+                        <h3>
+                            @Lang('main.srv4Title')
+                        </h3>
+                        <p>
+                            @Lang('main.srv4Desc')
+                        </p>
+                    </div>
+                </div>
+                <div class="srv-box">
+                    <div class="srv-icon">
+                        <i class="fa fa-truck"></i>
+                    </div>
+                    <div class="text">
+                        <h3>
+                            @Lang('main.srv5Title')
+                        </h3>
+                        <p>
+                            @Lang('main.srv5Desc')
+                        </p>
+                    </div>
+                </div>
+                <div class="srv-box">
+                    <div class="srv-icon">
+                        <i class="fa fa-comments"></i>
+                    </div>
+                    <div class="text">
+                        <h3>
+                            @Lang('main.srv6Title')
+                        </h3>
+                        <p>
+                            @Lang('main.srv6Desc')
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
--->
 
 @if($general->products == 'yes')
 <!-- ...:::: Start Banner Section:::... -->
@@ -301,6 +376,18 @@
     </div>
 </div>
 @endif
+
+<div class="quote">
+    <div class="container">
+        <q>
+            @Lang('main.slogan')
+        </q>
+        <p>
+            @Lang('main.aboutCompany')
+        </p>
+        <a class="hero-button" href="{{route('front-contact')}}"> @Lang('main.Contact us')</a>
+    </div>
+</div>
 
 <!-- ...:::: Start Company Logo Section:::... -->
 <div class="company-logo-section section-top-gap-100">

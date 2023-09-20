@@ -16346,7 +16346,7 @@ Components - Products
 
 /*Product Default CSS*/
 .product-default-single {
-    overflow: hidden;
+    overflow: hidden !important;
     border: 2px solid #eee;
     border-radius: 5px;
     position: relative;
@@ -16450,7 +16450,7 @@ Components - Products
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1) !important;
 }
 
-.product-action-icon-link li a i{
+.product-action-icon-link li a i {
     font-size: 20px;
     color: #ec2029;
 }
@@ -16483,7 +16483,7 @@ Components - Products
     border-color: #ec2029;
     color: #fff;
 }
-.product-action-icon-link li a:hover i{
+.product-action-icon-link li a:hover i {
     color: #fff !important;
 }
 
@@ -21138,7 +21138,7 @@ Layout - Footer
     color: #fff;
 }
 
-.cart-icon .count-style{
+.cart-icon .count-style {
     position: absolute;
     top: 0;
     right: 0;
@@ -21162,6 +21162,95 @@ Layout - Footer
     }
 }
 
-#add-to-cart{
+#add-to-cart {
     cursor: pointer;
 }
+
+/* Start Services */
+.services {
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+}
+@media (min-width: 768px) {
+    .services .services-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+        grid-column-gap: 40px;
+        grid-row-gap: 60px;
+    }
+}
+.services .srv-box {
+    display: flex;
+    gap: 20px;
+}
+.services .srv-box .text{
+    width: calc(100% - 70px);
+}
+.services .srv-box .srv-icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #ec2029;
+    color: #fff;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.services .srv-box i {
+    font-size: 20px;
+
+}
+@media (max-width: 767px) {
+    .services .srv-box {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+}
+.services .srv-box h3 {
+    margin-bottom: 30px;
+    color: var(--main-color);
+}
+.services .srv-box p {
+    line-height: 2;
+    color: #777;
+}
+/* End Services */
+
+.quote {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    background-image: url("../images/truck.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-attachment: fixed;
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  .quote::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 75%);
+  }
+  .quote .container {
+    position: relative;
+  }
+  .quote q {
+    font-size: 30px;
+    margin-bottom: 20px;
+    display: block;
+  }
