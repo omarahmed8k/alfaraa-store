@@ -21174,21 +21174,22 @@ Layout - Footer
 @media (min-width: 768px) {
     .services .services-container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         grid-column-gap: 40px;
         grid-row-gap: 60px;
     }
 }
 .services .srv-box {
     display: flex;
+    align-items: center;
     gap: 20px;
 }
 .services .srv-box .text{
-    width: calc(100% - 70px);
+    width: calc(100% - 55px);
 }
 .services .srv-box .srv-icon{
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     background: #ec2029;
     color: #fff;
@@ -21198,7 +21199,7 @@ Layout - Footer
     justify-content: center;
 }
 .services .srv-box i {
-    font-size: 20px;
+    font-size: 18px;
 
 }
 @media (max-width: 767px) {
@@ -21212,8 +21213,9 @@ Layout - Footer
     }
 }
 .services .srv-box h3 {
-    margin-bottom: 30px;
     color: var(--main-color);
+    font-size: 24px;
+    margin: 0;
 }
 .services .srv-box p {
     line-height: 2;

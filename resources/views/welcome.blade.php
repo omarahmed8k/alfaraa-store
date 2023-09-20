@@ -73,9 +73,11 @@
                         <h3>
                             @Lang('main.srv1Title')
                         </h3>
+                        <!-- 
                         <p>
                             @Lang('main.srv1Desc')
                         </p>
+                         -->
                     </div>
                 </div>
                 <div class="srv-box">
@@ -86,9 +88,11 @@
                         <h3>
                             @Lang('main.srv2Title')
                         </h3>
+                        <!-- 
                         <p>
                             @Lang('main.srv2Desc')
                         </p>
+                         -->
                     </div>
                 </div>
                 <div class="srv-box">
@@ -99,9 +103,11 @@
                         <h3>
                             @Lang('main.srv3Title')
                         </h3>
+                        <!-- 
                         <p>
                             @Lang('main.srv3Desc')
                         </p>
+                         -->
                     </div>
                 </div>
                 <div class="srv-box">
@@ -112,9 +118,11 @@
                         <h3>
                             @Lang('main.srv4Title')
                         </h3>
+                        <!-- 
                         <p>
                             @Lang('main.srv4Desc')
                         </p>
+                         -->
                     </div>
                 </div>
                 <div class="srv-box">
@@ -125,9 +133,11 @@
                         <h3>
                             @Lang('main.srv5Title')
                         </h3>
+                        <!-- 
                         <p>
                             @Lang('main.srv5Desc')
                         </p>
+                         -->
                     </div>
                 </div>
                 <div class="srv-box">
@@ -138,9 +148,11 @@
                         <h3>
                             @Lang('main.srv6Title')
                         </h3>
+                        <!-- 
                         <p>
                             @Lang('main.srv6Desc')
                         </p>
+                         -->
                     </div>
                 </div>
             </div>
@@ -377,6 +389,7 @@
 </div>
 @endif
 
+<!--
 <div class="quote">
     <div class="container">
         <q>
@@ -388,6 +401,7 @@
         <a class="hero-button" href="{{route('front-contact')}}"> @Lang('main.Contact us')</a>
     </div>
 </div>
+-->
 
 <!-- ...:::: Start Company Logo Section:::... -->
 <div class="company-logo-section section-top-gap-100">
