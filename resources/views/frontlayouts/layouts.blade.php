@@ -30,7 +30,7 @@ $info = \App\Models\Info::first();
     <link rel="stylesheet" href="{{asset('assetsfront/css/plugins/venobox.min.css')}}">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{{asset('assetsfront/css/stylee.css')}}">
+    <link rel="stylesheet" href="{{asset('assetsfront/css/style.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700;800&display=swap" rel="stylesheet">
