@@ -30,7 +30,7 @@ $info = \App\Models\Info::first();
     <link rel="stylesheet" href="{{asset('assetsfront/css/plugins/venobox.min.css')}}">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{{asset('assetsfront/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assetsfront/css/stylee.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700;800&display=swap" rel="stylesheet">
@@ -156,6 +156,15 @@ $info = \App\Models\Info::first();
 </head>
 
 <body>
+    <div class="elwatany-fixed">
+        <div class="container">
+            <div class="row">
+                <h4>
+                    @Lang('main.elwatany')
+                </h4>
+            </div>
+        </div>
+    </div>
     <div id="content">
 
         <div id="cart-icon" class="offcanvas-toggle cart-icon">
@@ -172,7 +181,7 @@ $info = \App\Models\Info::first();
                             <!-- Header Main Menu -->
                             <div class="main-menu">
                                 <nav>
-                                    <a class="logo" href="{{ route('veiwhome') }}"><img src="{{asset('assetsfront/images/logo/logo-light.png')}}" alt="logo"></a>
+                                    <a class="logo" href="{{ route('veiwhome') }}"><img src="{{asset('assetsfront/images/logo/logo-light-elwatany.png')}}" alt="logo"></a>
                                     <ul>
                                         <li>
                                             <a class="{{Route::current()->getName() == 'veiwhome' ? 'active main-menu-link' : '' }}" href="{{ route('veiwhome') }}">@Lang('main.Home')</a>
@@ -226,7 +235,7 @@ $info = \App\Models\Info::first();
                         <div class="col-12 d-flex justify-content-between align-items-center">
                             <div class="mobile-header--left">
                                 <a href="{{ route('veiwhome') }}" class="mobile-logo-link">
-                                    <img src="{{asset('assetsfront/images/logo/logo.png')}}" alt="logo" width="50%" class="mobile-logo-img">
+                                    <img src="{{asset('assetsfront/images/logo/logo-elwatany.png')}}" alt="logo" width="50%" class="mobile-logo-img">
                                 </a>
                             </div>
                             <div class="mobile-header--right">
@@ -339,6 +348,7 @@ $info = \App\Models\Info::first();
                                     <li>@Lang('main.branche1')</li>
                                     <li><a href="https://maps.app.goo.gl/4rsxMAiozGxB7a9c6" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche1Address')</span></a></li>
                                     <li><a href="tel:@Lang('main.branche1Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche1Phone')</span></a></li>
+                                    <li><a href="@Lang('main.branche1Whatsapp')" target="_blank"><i class="fa fa-whatsapp"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
                                 </ul>
                             </div>
                             <div class="footer-menu">
@@ -346,6 +356,7 @@ $info = \App\Models\Info::first();
                                     <li>@Lang('main.branche2')</li>
                                     <li><a href="https://maps.app.goo.gl/RQ1WqJBHKE89pgeQA" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche2Address')</span></a></li>
                                     <li><a href="tel:@Lang('main.branche2Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche2Phone')</span></a></li>
+                                    <li><a href="@Lang('main.branche2Whatsapp')" target="_blank"><i class="fa fa-whatsapp"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -356,6 +367,7 @@ $info = \App\Models\Info::first();
                                     <li>@Lang('main.branche3')</li>
                                     <li><a href="https://maps.app.goo.gl/6vXnw5rXc5RfeVTS8" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche3Address')</span></a></li>
                                     <li><a href="tel:@Lang('main.branche3Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche3Phone')</span></a></li>
+                                    <li><a href="@Lang('main.branche3Whatsapp')" target="_blank"><i class="fa fa-whatsapp"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
                                 </ul>
                             </div>
                             <div class="footer-menu">
@@ -363,6 +375,7 @@ $info = \App\Models\Info::first();
                                     <li>@Lang('main.branche4')</li>
                                     <li><a href="https://maps.app.goo.gl/HxvppHccMUJeqMp17" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche4Address')</span></a></li>
                                     <li><a href="tel:@Lang('main.branche4Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche4Phone')</span></a></li>
+                                    <li><a href="@Lang('main.branche4Whatsapp')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -373,6 +386,7 @@ $info = \App\Models\Info::first();
                                     <li>@Lang('main.branche5')</li>
                                     <li><a href="https://alfaraaonline.com.sa/" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche5Address')</span></a></li>
                                     <li><a href="tel:@Lang('main.branche5Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche5Phone')</span></a></li>
+                                    <li><a href="@Lang('main.branche5Whatsapp')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
                                 </ul>
                             </div>
                             <div class="footer-menu">
@@ -380,6 +394,7 @@ $info = \App\Models\Info::first();
                                     <li>@Lang('main.branche6')</li>
                                     <li><a href="https://maps.app.goo.gl/UGdnYyeybPd4Le427" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche6Address')</span></a></li>
                                     <li><a href="tel:@Lang('main.branche6Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche6Phone')</span></a></li>
+                                    <li><a href="@Lang('main.branche6Whatsapp')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
                                 </ul>
                             </div>
                         </div>
