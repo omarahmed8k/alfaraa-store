@@ -375,7 +375,7 @@ $info = \App\Models\Info::first();
                                     <li>@Lang('main.branche4')</li>
                                     <li><a href="https://maps.app.goo.gl/HxvppHccMUJeqMp17" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche4Address')</span></a></li>
                                     <li><a href="tel:@Lang('main.branche4Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche4Phone')</span></a></li>
-                                    <li><a href="@Lang('main.branche4Whatsapp')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
+                                    <li><a href="@Lang('main.branche4Whatsapp')" target="_blank"><i class="fa fa-whatsapp"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -386,7 +386,7 @@ $info = \App\Models\Info::first();
                                     <li>@Lang('main.branche5')</li>
                                     <li><a href="https://alfaraaonline.com.sa/" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche5Address')</span></a></li>
                                     <li><a href="tel:@Lang('main.branche5Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche5Phone')</span></a></li>
-                                    <li><a href="@Lang('main.branche5Whatsapp')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
+                                    <li><a href="@Lang('main.branche5Whatsapp')" target="_blank"><i class="fa fa-whatsapp"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
                                 </ul>
                             </div>
                             <div class="footer-menu">
@@ -394,7 +394,7 @@ $info = \App\Models\Info::first();
                                     <li>@Lang('main.branche6')</li>
                                     <li><a href="https://maps.app.goo.gl/UGdnYyeybPd4Le427" target="_blank"><i class="fa fa-map-marker"></i><span class="px-1">@Lang('main.branche6Address')</span></a></li>
                                     <li><a href="tel:@Lang('main.branche6Phone')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.branche6Phone')</span></a></li>
-                                    <li><a href="@Lang('main.branche6Whatsapp')" target="_blank"><i class="fa fa-phone"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
+                                    <li><a href="@Lang('main.branche6Whatsapp')" target="_blank"><i class="fa fa-whatsapp"></i><span class="px-1">@Lang('main.whatsapp')</span></a></li>
                                 </ul>
                             </div>
                         </div>

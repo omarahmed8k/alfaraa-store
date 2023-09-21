@@ -160,6 +160,25 @@
     </div>
 </div>
 
+<div class="elwatany section-top-gap-100">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="section-content text-center d-flex justify-content-between align-items-md-center align-items-start flex-md-row flex-column">
+                    <h3 class="section-title text-center" data-aos="fade-up" data-aos-delay="0">@Lang('main.watany')</h3>
+                </div>
+                <p class="mt-5">
+                    @Lang('main.watanyDesc')
+                </p>
+            </div>
+
+            <div class="col-lg-6">
+                <img class="img-fluid" src="{{asset('assetsfront/images/watany-img.png')}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
 @if($general->products == 'yes')
 <!-- ...:::: Start Banner Section:::... -->
 <div class="category-banner banner-section section-top-gap-100">
