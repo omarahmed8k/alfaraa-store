@@ -160,6 +160,7 @@
     </div>
 </div>
 
+<!--
 <div class="elwatany section-top-gap-100">
     <div class="container">
         <div class="row align-items-center">
@@ -178,6 +179,7 @@
         </div>
     </div>
 </div>
+-->
 
 @if($general->products == 'yes')
 <!-- ...:::: Start Banner Section:::... -->
@@ -441,7 +443,8 @@
             </div>
         </div>
     </div> <!-- End Company Logo Wrapper -->
-</div> <!-- ...:::: End Company Logo Section:::... -->
+</div> 
+<!-- ...:::: End Company Logo Section:::... -->
 
 
 @endsection

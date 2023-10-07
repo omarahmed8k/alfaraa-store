@@ -156,6 +156,7 @@ $info = \App\Models\Info::first();
 </head>
 
 <body>
+    <!--
     <div class="elwatany-fixed">
         <div class="container">
             <div class="row">
@@ -165,6 +166,8 @@ $info = \App\Models\Info::first();
             </div>
         </div>
     </div>
+    -->
+
     <div id="content">
 
         <div id="cart-icon" class="offcanvas-toggle cart-icon">
@@ -181,7 +184,7 @@ $info = \App\Models\Info::first();
                             <!-- Header Main Menu -->
                             <div class="main-menu">
                                 <nav>
-                                    <a class="logo" href="{{ route('veiwhome') }}"><img src="{{asset('assetsfront/images/logo/logo-light-elwatany.png')}}" alt="logo"></a>
+                                    <a class="logo" href="{{ route('veiwhome') }}"><img src="{{asset('assetsfront/images/logo/logo-light.png')}}" alt="logo"></a>
                                     <ul>
                                         <li>
                                             <a class="{{Route::current()->getName() == 'veiwhome' ? 'active main-menu-link' : '' }}" href="{{ route('veiwhome') }}">@Lang('main.Home')</a>
@@ -235,7 +238,7 @@ $info = \App\Models\Info::first();
                         <div class="col-12 d-flex justify-content-between align-items-center">
                             <div class="mobile-header--left">
                                 <a href="{{ route('veiwhome') }}" class="mobile-logo-link">
-                                    <img src="{{asset('assetsfront/images/logo/logo-elwatany.png')}}" alt="logo" width="50%" class="mobile-logo-img">
+                                    <img src="{{asset('assetsfront/images/logo/logo.png')}}" alt="logo" width="50%" class="mobile-logo-img">
                                 </a>
                             </div>
                             <div class="mobile-header--right">
