@@ -26,6 +26,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
 	Route::get('/categories', 'App\Http\Controllers\Front\CategoryController@index')->name('front-category');
 	Route::get('/category/{id}', 'App\Http\Controllers\Front\CategoryController@show')->name('front-show-category');
 
+	Route::get('/image-editor', 'App\Http\Controllers\Front\ImageEditorController@index')->name('front-image-editor');
+	
 	Route::get('/contacts', 'App\Http\Controllers\Front\ContatController@index')->name('front-contact');
 	// Route::get('/contact/create', 'App\Http\Controllers\Front\ContatController@create')->name('front-create-contact');
 	Route::post('/contact/store', 'App\Http\Controllers\Front\ContatController@store')->name('front-store-contact');

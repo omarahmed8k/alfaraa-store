@@ -5,17 +5,17 @@
     * Commons Variables
     *****************************/
     var $window = $(window),
-    $body = $('body');
+        $body = $('body');
 
     /****************************
     * Sticky Menu
     *****************************/
-    $(window).on('scroll',function() {
+    $(window).on('scroll', function () {
         var scroll = $(window).scrollTop();
         if (scroll < 100) {
-         $(".sticky-header").removeClass("sticky");
-        }else{
-         $(".sticky-header").addClass("sticky");
+            $(".sticky-header").removeClass("sticky");
+        } else {
+            $(".sticky-header").addClass("sticky");
         }
     });
 
@@ -28,24 +28,24 @@
             $offCanvas = $('.offcanvas'),
             $offCanvasOverlay = $('.offcanvas-overlay'),
             $mobileMenuToggle = $('.mobile-menu-toggle');
-            $offCanvasToggle.on('click', function (e) {
-                e.preventDefault();
-                var $this = $(this),
-                    $target = $this.attr('href');
-                $body.addClass('offcanvas-open');
-                $($target).addClass('offcanvas-open');
-                $offCanvasOverlay.fadeIn();
-                if ($this.parent().hasClass('mobile-menu-toggle')) {
-                    $this.addClass('close');
-                }
-            });
-            $('.offcanvas-close, .offcanvas-overlay').on('click', function (e) {
-                e.preventDefault();
-                $body.removeClass('offcanvas-open');
-                $offCanvas.removeClass('offcanvas-open');
-                $offCanvasOverlay.fadeOut();
-                $mobileMenuToggle.find('a').removeClass('close');
-            });
+        $offCanvasToggle.on('click', function (e) {
+            e.preventDefault();
+            var $this = $(this),
+                $target = $this.attr('href');
+            $body.addClass('offcanvas-open');
+            $($target).addClass('offcanvas-open');
+            $offCanvasOverlay.fadeIn();
+            if ($this.parent().hasClass('mobile-menu-toggle')) {
+                $this.addClass('close');
+            }
+        });
+        $('.offcanvas-close, .offcanvas-overlay').on('click', function (e) {
+            e.preventDefault();
+            $body.removeClass('offcanvas-open');
+            $offCanvas.removeClass('offcanvas-open');
+            $offCanvasOverlay.fadeOut();
+            $mobileMenuToggle.find('a').removeClass('close');
+        });
     })();
 
 
@@ -88,8 +88,8 @@
         arrows: false,
         fade: true,
         autoplay: true,
-        infinite:true,
-        rtl:window.lang == 'ar',
+        infinite: true,
+        rtl: window.lang == 'ar',
         dots: true,
         easing: 'linear',
         speed: 2000,
@@ -103,7 +103,7 @@
         infinite: true,
         slidesToShow: 3,
         slidesToScroll: 1,
-        rtl:window.lang == 'ar',
+        rtl: window.lang == 'ar',
         dots: false,
         rows: 1,
         easing: 'ease-out',
@@ -137,13 +137,13 @@
      ***********************************************/
     $('.company-logo-slider').slick({
         autoplay: true,
-        infinite:true,
+        infinite: true,
         arrows: false,
         dots: false,
         easing: 'linear',
         speed: 1000,
         mobileFirst: true,
-        rtl:window.lang == 'ar',
+        rtl: window.lang == 'ar',
         // slidesToShow: 5,
         // slidesToScroll: 1,
         // responsive: [
@@ -170,11 +170,11 @@
     /***********************************
     * Gallery - Horizontal
     ************************************/
-   $('.product-large-image-horaizontal').slick({
+    $('.product-large-image-horaizontal').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
-        rtl:window.lang == 'ar',
+        rtl: window.lang == 'ar',
 
         fade: true,
         asNavFor: '.product-image-thumb-horizontal'
@@ -184,7 +184,7 @@
         slidesToScroll: 1,
         focusOnSelect: true,
         arrows: true,
-        rtl:window.lang == 'ar',
+        rtl: window.lang == 'ar',
 
         asNavFor: '.product-large-image-horaizontal',
         prevArrow: '<button type="button" class="gallery-nav gallery-nav-horizontal gallery-nav-horizontal-left prevArrow"><i class="fa fa-angle-left"></i></button>',
@@ -219,7 +219,7 @@
     /***********************************
     * Gallery - Vertical
     ************************************/
-   $('.product-large-image-vertical').slick({
+    $('.product-large-image-vertical').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
@@ -231,7 +231,7 @@
         slidesToScroll: 1,
         focusOnSelect: true,
         arrows: true,
-        rtl:window.lang == 'ar',
+        rtl: window.lang == 'ar',
 
         vertical: true,
         asNavFor: '.product-large-image-vertical',
@@ -278,7 +278,7 @@
         slidesToShow: 4,
         slidesToScroll: 1,
         focusOnSelect: true,
-        rtl:window.lang == 'ar',
+        rtl: window.lang == 'ar',
 
         arrows: true,
         prevArrow: '<button type="button" class="gallery-nav gallery-nav-horizontal gallery-nav-horizontal-left prevArrow"><i class="fa fa-angle-left"></i></button>',
@@ -315,7 +315,7 @@
     /***********************************
     * Modal  Quick View Image
     ************************************/
-   $('.modal-product-image-large').slick({
+    $('.modal-product-image-large').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
@@ -325,7 +325,7 @@
     $('.modal-product-image-thumb').slick({
         slidesToShow: 4,
         slidesToScroll: 1,
-                rtl:window.lang == 'ar',
+        rtl: window.lang == 'ar',
 
         asNavFor: '.modal-product-image-large',
         focusOnSelect: true,
@@ -340,7 +340,7 @@
     /***********************************
     * Blog - Slider
     ************************************/
-   $('.blog-image-slider').slick({
+    $('.blog-image-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         focusOnSelect: true,
@@ -352,7 +352,7 @@
     /***********************************
     * Testimonial - Slider
     ************************************/
-   $('.testimonial-slider').slick({
+    $('.testimonial-slider').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
         focusOnSelect: true,
@@ -368,17 +368,17 @@
     /************************************************
      * Price Slider
      ***********************************************/
-    $( "#slider-range" ).slider({
+    $("#slider-range").slider({
         range: true,
         min: 0,
         max: 500,
-        values: [ 75, 300 ],
-        slide: function( event, ui ) {
-          $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        values: [75, 300],
+        slide: function (event, ui) {
+            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
         }
-      });
-      $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-        " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+    });
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+        " - $" + $("#slider-range").slider("values", 1));
 
 
     /************************************************
@@ -400,8 +400,8 @@
     /************************************************
     * Hash Link Scroll To Top Prevent
     ***********************************************/
-    $('a[href="#"]').on('click', (function(e) {
-    e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    $('a[href="#"]').on('click', (function (e) {
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
     }));
 
     /************************************************
@@ -409,5 +409,106 @@
      ***********************************************/
     $('body').materialScrollTop();
 
+    // Get the nameInput, fontColorInput, and other elements
+    const nameInput = document.getElementById('nameInput');
+    const fontColorInput = document.getElementById('fontColorInput');
+    const imageThumbnails = document.querySelectorAll('.thumbnail');
+    const outputImage = document.getElementById('outputImage');
+    const downloadLink = document.getElementById('downloadLink');
+
+    // Event listener for the thumbnail clicks
+    imageThumbnails.forEach((thumbnail) => {
+        thumbnail.addEventListener('click', () => {
+            imageThumbnails.forEach((t) => t.classList.remove('selected'));
+            thumbnail.classList.add('selected');
+            outputImage.src = thumbnail.src;
+
+            // Show the nameInput, fontColorInput, and labels when an image is selected
+            nameInput.style.display = 'block';
+            fontColorInput.style.display = 'block';
+            document.querySelectorAll('label[for="nameInput"]').forEach((label) => {
+                label.style.display = 'block';
+            });
+            document.querySelectorAll('label[for="fontColorInput"]').forEach((label) => {
+                label.style.display = 'block';
+            });
+
+            updateImage(); // Call the function to update the image with the name and font color
+        });
+    });
+
+    // Event listener for input field changes
+    nameInput.addEventListener('input', () => {
+        updateImage(); // Call the function to update the image with the name and font color
+    });
+
+    // Event listener for font color changes
+    fontColorInput.addEventListener('input', () => {
+        updateImage(); // Call the function to update the image with the name and font color
+    });
+
+    // Function to update the image with the name and font color
+    function updateImage() {
+        const name = nameInput.value;
+        const selectedImageSrc = document.querySelector('.thumbnail.selected')?.src;
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set the canvas dimensions to a higher resolution (e.g., 1080 x 1080)
+        canvas.width = 1080;
+        canvas.height = 1080;
+
+        const img = new Image();
+        img.src = selectedImageSrc;
+
+        img.onload = function () {
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height); // Scale the image to fit the canvas
+
+            if (name.trim() !== '') {
+                const fontColor = fontColorInput.value; // Get the selected font color
+                ctx.font = '50px Almarai';
+                ctx.fillStyle = fontColor; // Set the font color to the selected color
+
+                // Center horizontally, move down by 20 pixels (adjust as needed)
+                const textX = canvas.width / 2 - ctx.measureText(name).width / 2;
+                const textY = canvas.height / 2 + 400; // Adjust the 20 as needed
+
+                ctx.fillText(name, textX, textY);
+            }
+
+            const dataURL = canvas.toDataURL('image/jpeg', 1.0); // Set quality to 1.0 (maximum quality)
+            downloadLink.href = dataURL;
+            downloadLink.style.display = name.trim() !== '' ? 'block' : 'none';
+
+            // Show the default image only if no other image is selected
+            outputImage.style.display = selectedImageSrc != 'assetsfront/images/logo/logo-light.png' ? 'block' : 'none';
+
+            // Check if no image is selected and hide the input elements and labels
+            if (selectedImageSrc != 'assetsfront/images/logo/logo-light.png') {
+                nameInput.style.display = 'block';
+                fontColorInput.style.display = 'block';
+                document.querySelectorAll('label[for="nameInput"]').forEach((label) => {
+                    label.style.display = 'block';
+                });
+                document.querySelectorAll('label[for="fontColorInput"]').forEach((label) => {
+                    label.style.display = 'block';
+                });
+            } else {
+                nameInput.style.display = 'none';
+                fontColorInput.style.display = 'none';
+                document.querySelectorAll('label[for="nameInput"]').forEach((label) => {
+                    label.style.display = 'none';
+                });
+                document.querySelectorAll('label[for="fontColorInput"]').forEach((label) => {
+                    label.style.display = 'none';
+                });
+            }
+
+            outputImage.src = dataURL; // Update the displayed image with the name and font color
+        };
+    }
+
+    // Initially, call the updateImage function to set the initial image and hide the download link
+    updateImage();
 
 })(jQuery);
