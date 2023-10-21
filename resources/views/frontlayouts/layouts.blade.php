@@ -30,7 +30,7 @@ $info = \App\Models\Info::first();
     <link rel="stylesheet" href="{{asset('assetsfront/css/plugins/venobox.min.css')}}">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{{asset('assetsfront/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assetsfront/css/styles.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700;800&display=swap" rel="stylesheet">
@@ -523,7 +523,7 @@ $info = \App\Models\Info::first();
                             ${product.data_nickname_st}${product.data_nickname_num}
                             <br>
                             <button type="button" onclick="adjustQuantity(${product.id}, 1)" class="btn btn-sm btn-primary">+</button>
-                            <span class="cart-quantity">${product.quantity}</span>
+                            <span class="cart-quantity">${product.quantity || 1}</span>
                             <button type="button" onclick="adjustQuantity(${product.id}, -1)" class="btn btn-sm btn-danger">-</button>
                         </div>
                         <div onclick="removeFromCart(${product.id})" class="cart-remove">
@@ -569,13 +569,13 @@ ${productsMessage}
         addToCartButtons.forEach((button) => {
             button.addEventListener('click', () => {
                 const product = {
-                    id: button.getAttribute('data-id'),
-                    name: button.getAttribute('data-name'),
-                    image: button.getAttribute('data-image'),
-                    data_nickname_main: button.getAttribute('data-nickname-main'),
-                    data_nickname_st: button.getAttribute('data-nickname-st'),
-                    data_nickname_num: button.getAttribute('data-nickname-num'),
-                    data_quantity: button.getAttribute('data-quantity'),
+                    id: button.getAttribute('data-id') || '',
+                    name: button.getAttribute('data-name') || '',
+                    image: button.getAttribute('data-image') || '',
+                    data_nickname_main: button.getAttribute('data-nickname-main') || '',
+                    data_nickname_st: button.getAttribute('data-nickname-st') || '',
+                    data_nickname_num: button.getAttribute('data-nickname-num') || '',
+                    data_quantity: button.getAttribute('data-quantity') || 1,
                 };
                 addToCart(product);
                 toggleCart.classList.add('offcanvas-open');
