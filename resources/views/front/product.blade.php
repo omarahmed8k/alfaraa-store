@@ -9,20 +9,18 @@
     <div class="breadcrumb-wrapper">
         <div class="container">
             <div class="row">
-                <div class="col-8 d-flex justify-content-between justify-content-md-between  align-items-center flex-md-row flex-column">
+                <div class="col-12 d-flex justify-content-between justify-content-md-between  align-items-center flex-md-row flex-column">
                     <h3 class="breadcrumb-title">@Lang('main.Products')</h3>
-                </div>
-
-                <div class="col-3 text-end">
-                    <!-- Start Header Action Icon -->
-                    <ul class="header-action-icon">
-                        {{--<a href="{{ route('front-category') }}" class="hero-button">@Lang('main.Categories')</a>--}}
-
-                    </ul> <!-- End Header Action Icon -->
                 </div>
             </div>
         </div>
     </div>
+    <form class="hero-search" action="{{ route('front-product') }}" method="get">
+        <div class="header-search-box default-search-style d-flex">
+            <input name="name" class="default-search-style-input-box" type="search" required placeholder="@Lang('main.searchBy')">
+            <button class="default-search-style-input-btn" type="submit"><i class="icon-search"></i></button>
+        </div>
+    </form>
 </div> <!-- ...:::: End Breadcrumb Section:::... -->
 
 <!-- ...:::: Start Shop Section:::... -->

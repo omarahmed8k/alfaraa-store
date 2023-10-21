@@ -340,7 +340,7 @@
                     <h3 class="section-title" data-aos="fade-up" data-aos-delay="0">@Lang('main.Best selling items')</h3>
                     <ul class="tablist nav product-tab-btn" data-aos="fade-up" data-aos-delay="400">
                         <li>
-                            <a class="nav-link active" href="{{route('front-category')}}">
+                            <a class="nav-link active" href="{{route('front-product')}}">
                                 <span>@Lang('main.showMore')</span>
                             </a>
                         </li>

@@ -15,6 +15,12 @@
             </div>
         </div>
     </div>
+    <form class="hero-search" action="{{ route('front-product') }}" method="get">
+        <div class="header-search-box default-search-style d-flex">
+            <input name="name" class="default-search-style-input-box" type="search" required placeholder="@Lang('main.searchBy')">
+            <button class="default-search-style-input-btn" type="submit"><i class="icon-search"></i></button>
+        </div>
+    </form>
 </div> <!-- ...:::: End Breadcrumb Section:::... -->
 
 <!-- ...:::: Start Shop Section:::... -->
