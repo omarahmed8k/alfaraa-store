@@ -30,7 +30,7 @@ $info = \App\Models\Info::first();
     <link rel="stylesheet" href="{{asset('assetsfront/css/plugins/venobox.min.css')}}">
 
     <!-- Main CSS -->
-    <link rel="stylesheet" href="{{asset('assetsfront/css/stylee.css')}}">
+    <link rel="stylesheet" href="{{asset('assetsfront/css/style.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@700;800&display=swap" rel="stylesheet">
@@ -489,154 +489,130 @@ $info = \App\Models\Info::first();
     <script src="{{asset('assetsfront/js/main.js?v2.06')}}"></script>
 
     <script>
-        const addToCartButton = document.querySelectorAll('#add-to-cart');
+        const addToCartButtons = document.querySelectorAll('#add-to-cart');
         const toggleCart = document.getElementById('offcanvas-add-cart');
         const cartIcon = document.getElementById('cart-icon');
         const cartItems = document.getElementById('cart-items');
-        const products = JSON.parse(localStorage.getItem('products')) || [];
         const cartOrderWhatsapp = document.getElementById('cart-order-whatsapp');
         const cartCount = document.getElementById('cart-count');
 
-        $(cartCount).text(products.length);
+        let products = JSON.parse(localStorage.getItem('products')) || [];
 
-        if (products.length <= 0) {
-            $(cartOrderWhatsapp).hide();
-        } else {
-            $(cartOrderWhatsapp).show();
+        function updateCartUI() {
+            cartCount.textContent = products.length;
+            cartOrderWhatsapp.style.display = products.length > 0 ? 'block' : 'none';
         }
 
         function renderProducts() {
-            products?.forEach(function(product) {
-                const li = document.createElement('li');
-                li.classList.add('offcanvas-add-cart-list');
-                li.innerHTML = `
+            cartItems.innerHTML = ''; // Clear existing items
+            products.forEach(renderProduct);
+        }
+
+        function renderProduct(product) {
+            const li = document.createElement('li');
+            li.classList.add('offcanvas-add-cart-list');
+            li.innerHTML =
+                `
                     <div class="cart-item">
-                        <img src="${product.image}" alt="Cart Product Image">
-                        <a href="/product/${product.id}">
-                            ${product.name} ${product.data_nickname_main}
+                        <img src="${product.image}" alt="Cart Product Image" onclick="viewProduct(${product.id})" style="cursor: pointer;">
+                        <div class="info">
+                            <span onclick="viewProduct(${product.id})" style="cursor: pointer;">
+                                ${product.name} ${product.data_nickname_main}
+                            </span>
                             <br>
                             ${product.data_nickname_st}${product.data_nickname_num}
-                        </a>
+                            <br>
+                            <button type="button" onclick="adjustQuantity(${product.id}, 1)" class="btn btn-sm btn-primary">+</button>
+                            <span class="cart-quantity">${product.quantity}</span>
+                            <button type="button" onclick="adjustQuantity(${product.id}, -1)" class="btn btn-sm btn-danger">-</button>
+                        </div>
                         <div onclick="removeFromCart(${product.id})" class="cart-remove">
                             <i class="fa fa-times"></i>
                         </div>
                     </div>
                 `;
-                cartItems.appendChild(li);
+            cartItems.appendChild(li);
+        }
+
+        function addToCart(product) {
+            const foundProduct = products.find((p) => p.id == product.id);
+            if (foundProduct) {
+                foundProduct.quantity += 1;
+            } else {
+                product.quantity = 1;
+                products.push(product);
+            }
+            localStorage.setItem('products', JSON.stringify(products));
+            updateCartUI();
+            renderProducts();
+        }
+
+        cartIcon.addEventListener('click', () => {
+            toggleCart.classList.add('offcanvas-open');
+        });
+
+        cartOrderWhatsapp.addEventListener('click', () => {
+            // Build the message content with the products in the cart
+            const baseUrl = window.location.origin;
+            const productsMessage = products.map((p) => ` الكمية:${p.quantity} ${p.name} ${p.data_nickname_main} ${baseUrl}/product/${p.id}`).join('\n');
+            const whatsappMessage =
+                `مرحبًا أريد طلب المنتجات التالية:
+${productsMessage}
+`;
+
+            // Construct the WhatsApp link with the message content
+            const whatsappUrl = `https://wa.me/{{$info->whatsapp}}?text=${encodeURI(whatsappMessage)}`;
+            // Open a new window to send the WhatsApp message
+            window.open(whatsappUrl, '_blank');
+        });
+
+        addToCartButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const product = {
+                    id: button.getAttribute('data-id'),
+                    name: button.getAttribute('data-name'),
+                    image: button.getAttribute('data-image'),
+                    data_nickname_main: button.getAttribute('data-nickname-main'),
+                    data_nickname_st: button.getAttribute('data-nickname-st'),
+                    data_nickname_num: button.getAttribute('data-nickname-num'),
+                    data_quantity: button.getAttribute('data-quantity'),
+                };
+                addToCart(product);
+                toggleCart.classList.add('offcanvas-open');
             });
+        });
+
+        function adjustQuantity(id, change) {
+            console.log(id, change)
+            products = products.map((p) => {
+                console.log(p)
+                if (p.id == id) {
+                    p.quantity += change;
+                }
+                return p;
+            }).filter((p) => p.quantity > 0);
+
+            localStorage.setItem('products', JSON.stringify(products));
+            renderProducts();
+            updateCartUI();
+        }
+
+        function removeFromCart(id) {
+            products = products.filter((p) => p.id != id);
+            localStorage.setItem('products', JSON.stringify(products));
+            renderProducts();
+            updateCartUI();
+            console.log(products)
+        }
+
+        function viewProduct(id) {
+            window.location.href = `/product/${id}`;
         }
 
         renderProducts();
-
-        function removeFromCart(id) {
-            // remove product from cart
-            const productIndex = products.findIndex(function(p) {
-                return p.id == id;
-            });
-            products.splice(productIndex, 1);
-            localStorage.setItem('products', JSON.stringify(products));
-
-            // update cart count
-            const cartCountValue = parseInt($(cartCount).text());
-            $(cartCount).text(cartCountValue - 1);
-
-            // remove product from cart list
-            const cartItems = $('#cart-items');
-            const cartItemsList = $(cartItems).find('.offcanvas-add-cart-list');
-            cartItemsList.each(function() {
-                const productId = $(this).find('.cart-remove').attr('onclick').split('(')[1].split(')')[0];
-                if (productId == id) $(this).remove();
-            });
-
-            if (products.length <= 0) {
-                $(cartOrderWhatsapp).hide();
-            } else {
-                $(cartOrderWhatsapp).show();
-            }
-        }
-
-        $(cartIcon).click(function() {
-            $(toggleCart).addClass('offcanvas-open');
-        });
-
-        $(addToCartButton).click(function() {
-            $(toggleCart).addClass('offcanvas-open');
-
-            const product = {
-                id: $(this).attr('data-id'),
-                name: $(this).attr('data-name'),
-                image: $(this).attr('data-image'),
-                data_nickname_main: $(this).attr('data-nickname-main'),
-                data_nickname_st: $(this).attr('data-nickname-st'),
-                data_nickname_num: $(this).attr('data-nickname-num'),
-            };
-
-            const productIndex = products.findIndex(function(p) {
-                return p.id == product.id;
-            });
-            console.log(productIndex)
-            if (productIndex == -1) {
-                products.push(product)
-                const cartCountValue = parseInt($(cartCount).text());
-                $(cartCount).text(cartCountValue + 1);
-            } else {
-                products.splice(productIndex, 1);
-                products.push(product)
-            }
-            localStorage.setItem('products', JSON.stringify(products));
-
-            // add product to cart list
-            const cartItems = $('#cart-items');
-            const cartItemsList = $(cartItems).find('.offcanvas-add-cart-list');
-            cartItemsList.each(function() {
-                const productId = $(this).find('.cart-remove').attr('onclick').split('(')[1].split(')')[0];
-                if (productId == product.id) $(this).remove();
-            });
-
-            const li = document.createElement('li');
-            li.classList.add('offcanvas-add-cart-list');
-            li.innerHTML = `
-                <div class="cart-item">
-                    <img src="${product.image}" alt="Cart Product Image">
-                    <a href="/product/${product.id}">
-                        ${product.name} ${product.data_nickname_main}
-                        <br>
-                        ${product.data_nickname_st}${product.data_nickname_num}
-                    </a>
-                    <div onclick="removeFromCart(${product.id})" class="cart-remove">
-                        <i class="fa fa-times"></i>
-                    </div>
-                </div>
-            `;
-            cartItems.prepend(li);
-
-            // update cart order whatsapp link
-            const baseUrl = window.location.origin;
-            const productsIds = products.map(function(p) {
-                return `${p.name} ${p.data_nickname_main} ${baseUrl}/product/${p.id}`;
-            });
-            const productsIdsString = productsIds.join('%0A');
-            const url = `https://wa.me/{{$info->whatsapp}}?text=مرحبا%20أريد%20طلب%20المنتجات%20التالية%20%0A${productsIdsString}`;
-            $(cartOrderWhatsapp).attr('href', url);
-
-            if (products.length <= 0) {
-                $(cartOrderWhatsapp).hide();
-            } else {
-                $(cartOrderWhatsapp).show();
-            }
-        });
-
-        $(cartOrderWhatsapp).click(function() {
-            const products = JSON.parse(localStorage.getItem('products')) || [];
-            const baseUrl = window.location.origin;
-            const productsIds = products.map(function(p) {
-                return `${p.name} ${p.data_nickname_main} ${baseUrl}/product/${p.id}`;
-            });
-            const productsIdsString = productsIds.join('%0A');
-            const url = `https://wa.me/{{$info->whatsapp}}?text=مرحبا%20أريد%20طلب%20المنتجات%20التالية%20%0A${productsIdsString}`;
-            $(this).attr('href', url);
-        });
+        updateCartUI();
     </script>
+
 
     @include('sweetalert::alert')
 </body>

@@ -102,7 +102,7 @@
                     </div>
                     <!-- End  Product Details Text Area-->
                     <div class="price">
-                        <div id="add-to-cart" class="hero-button offcanvas-toggle w-100 text-center" data-id="{{$product->id}}" data-name="{{$product['name_'.app()->getLocale()]}}" data-image="{{asset('images/'.$product->image)}}" data-nickname-main="{{$product->nickname_main}}" data-nickname-st="{{$product->nickname_st}}" data-nickname-num="{{$product->nickname_num}}">
+                        <div id="add-to-cart" class="hero-button offcanvas-toggle w-100 text-center" data-id="{{$product->id}}" data-name="{{$product['name_'.app()->getLocale()]}}" data-image="{{asset('images/'.$product->image)}}" data-nickname-main="{{$product->nickname_main}}" data-nickname-st="{{$product->nickname_st}}" data-nickname-num="{{$product->nickname_num}}" data-quantity="1">
                             @Lang('main.addToCart')
                         </div>
                         @if($product->status == 'active')

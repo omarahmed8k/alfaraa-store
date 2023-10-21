@@ -16482,6 +16482,15 @@ Components - Products
     transition-delay: 0.3s;
 }
 
+@media (max-width: 768px) {
+    .product-default-single .product-action-icon-link li {
+        visibility: visible;
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
 .product-action-icon-link li a:hover {
     background: #db2f2f;
     border-color: #db2f2f;
@@ -21089,7 +21098,7 @@ Layout - Footer
     z-index: 1;
 }
 
-.cart-item a {
+.cart-item .info {
     font-size: 12px;
     margin: 0;
     line-height: 1.5;
@@ -21101,7 +21110,7 @@ Layout - Footer
     z-index: 1;
 }
 
-.cart-item div {
+.cart-item .cart-remove {
     position: absolute;
     left: 10px;
     bottom: 50%;
