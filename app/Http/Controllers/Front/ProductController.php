@@ -17,21 +17,20 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $info=Info::all();
-        $products=Product::when($request->name, function($query, $value){
-            $query->where('name_ar','LIKE',"%$value%")
-            ->orWhere('name_ar','LIKE',"%$value%")
-            ->orWhere('name_en','LIKE',"%$value%")
-            ->orWhere('dese_ar','LIKE',"%$value%")
-            ->orWhere('dese_en','LIKE',"%$value%")
-            ->orWhere('nickname_st','LIKE',"%$value%")
-            ->orWhere('nickname_num','LIKE',"%$value%")
-            ->orWhere('nickname_main','LIKE',"%$value%");
-
+        $info = Info::all();
+        $products = Product::when($request->name, function ($query, $value) {
+            $query->where('name_ar', 'LIKE', "%$value%")
+                ->orWhere('name_ar', 'LIKE', "%$value%")
+                ->orWhere('name_en', 'LIKE', "%$value%")
+                ->orWhere('dese_ar', 'LIKE', "%$value%")
+                ->orWhere('dese_en', 'LIKE', "%$value%")
+                ->orWhere('nickname_st', 'LIKE', "%$value%")
+                ->orWhere('nickname_num', 'LIKE', "%$value%")
+                ->orWhere('nickname_main', 'LIKE', "%$value%");
         })->paginate(20);
 
-        // $products=Product::orderBy('created_at', 'desc')->paginate(8);
-        return view('front.product',compact('products','info'));
+        $products = Product::orderBy('created_at', 'desc')->paginate(20);
+        return view('front.product', compact('products', 'info'));
     }
 
     /**
@@ -64,14 +63,11 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = Product::with('images')->findOrFail($id);
-        $info=Info::orderBy('created_at', 'desc')->paginate(1);
-
-    
-    
+        $info = Info::orderBy('created_at', 'desc')->paginate(1);
         return view('front.product-show', [
-           'product' => $product,
-           'info' =>$info,
-       ]);
+            'product' => $product,
+            'info' => $info,
+        ]);
     }
 
     /**
