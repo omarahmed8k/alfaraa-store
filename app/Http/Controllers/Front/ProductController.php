@@ -18,7 +18,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $info = Info::all();
-        $products = Product::when($request->name, function ($query, $value) {
+        $products = Product::orderBy('created_at', 'desc')->when($request->name, function ($query, $value) {
             $query->where('name_ar', 'LIKE', "%$value%")
                 ->orWhere('name_ar', 'LIKE', "%$value%")
                 ->orWhere('name_en', 'LIKE', "%$value%")
@@ -29,7 +29,6 @@ class ProductController extends Controller
                 ->orWhere('nickname_main', 'LIKE', "%$value%");
         })->paginate(20);
 
-        $products = Product::orderBy('created_at', 'desc')->paginate(20);
         return view('front.product', compact('products', 'info'));
     }
 
