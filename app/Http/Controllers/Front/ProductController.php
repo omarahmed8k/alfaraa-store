@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Info;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -18,16 +20,95 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $info = Info::all();
-        $products = Product::orderBy('created_at', 'desc')->when($request->name, function ($query, $value) {
-            $query->where('name_ar', 'LIKE', "%$value%")
-                ->orWhere('name_ar', 'LIKE', "%$value%")
-                ->orWhere('name_en', 'LIKE', "%$value%")
-                ->orWhere('dese_ar', 'LIKE', "%$value%")
-                ->orWhere('dese_en', 'LIKE', "%$value%")
-                ->orWhere('nickname_st', 'LIKE', "%$value%")
-                ->orWhere('nickname_num', 'LIKE', "%$value%")
-                ->orWhere('nickname_main', 'LIKE', "%$value%");
-        })->paginate(20);
+        $productsQuery = Product::orderBy('created_at', 'desc');
+
+        // Handle name search
+        if ($request->name) {
+            $productsQuery->where(function ($query) use ($request) {
+                $query->where('name_ar', 'LIKE', "%{$request->name}%")
+                    ->orWhere('name_en', 'LIKE', "%{$request->name}%")
+                    ->orWhere('dese_ar', 'LIKE', "%{$request->name}%")
+                    ->orWhere('dese_en', 'LIKE', "%{$request->name}%")
+                    ->orWhere('nickname_st', 'LIKE', "%{$request->name}%")
+                    ->orWhere('nickname_num', 'LIKE', "%{$request->name}%")
+                    ->orWhere('nickname_main', 'LIKE', "%{$request->name}%");
+            });
+        }
+
+        // Handle image search
+        if ($request->hasFile('image')) {
+            $request->validate(['image' => 'required|image']);
+            $imagePath = $request->file('image')->store('images', 'public');
+            $imageContent = file_get_contents(storage_path('app/public/' . $imagePath));
+
+            // Computer Vision API
+            $visionEndpoint = 'https://alfaraasearchbyimage.cognitiveservices.azure.com/vision/v3.1/analyze';
+            $visionSubscriptionKey = '225372099f7f4deaa783a05feaf9ccc9';
+
+            $visionResponse = Http::withHeaders([
+                'Ocp-Apim-Subscription-Key' => $visionSubscriptionKey,
+                'Content-Type' => 'application/octet-stream',
+            ])->withBody($imageContent, 'application/octet-stream')->post($visionEndpoint . '?visualFeatures=Categories,Description,Color');
+
+            $visionData = $visionResponse->json();
+
+            if (isset($visionData['description']['tags'])) {
+                $tags = $visionData['description']['tags'];
+
+                // Translator API
+                $translatorEndpoint = 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=ar';
+                $translatorSubscriptionKey = '14cf171fdf2341eeba1c40f67b7a606c';
+
+                $translatorResponse = Http::withHeaders([
+                    'Ocp-Apim-Subscription-Key' => $translatorSubscriptionKey,
+                    'Content-Type' => 'application/json',
+                    'Accept' => 'application/json',
+                    'Ocp-Apim-Subscription-Region' => 'qatarcentral',
+                ])->withBody(json_encode([['Text' => implode(", ", $tags)]], JSON_UNESCAPED_UNICODE), 'application/json')->post($translatorEndpoint);
+
+                if ($translatorResponse->status() != 200) {
+                    Log::error('Translation API request failed', ['response' => $translatorResponse->body()]);
+                    return response()->json(['error' => 'Translation API request failed'], 500);
+                }
+
+                $translatorData = $translatorResponse->json();
+                $translatedTags = array_map(function ($translation) {
+                    return $translation['translations'][0]['text'];
+                }, $translatorData);
+
+                $translatedTags = explode(', ', implode(', ', $translatedTags));
+
+                // Search products by translated tags (Arabic)
+                $productsQuery->where(function ($query) use ($translatedTags) {
+                    foreach ($translatedTags as $tag) {
+                        if (empty($tag)) {
+                            continue;
+                        }
+                        $query->orWhere('name_ar', 'LIKE', '%' . $tag . '%');
+                    }
+                });
+
+                // Search products by tags (English)
+                $productsQuery->orWhere(function ($query) use ($tags) {
+                    foreach ($tags as $tag) {
+                        if (empty($tag)) {
+                            continue;
+                        }
+                        $query->orWhere('name_en', 'LIKE', '%' . $tag . '%');
+                    }
+                });
+            } else {
+                Log::error('No tags found in vision API response', ['response' => $visionData]);
+                return response()->json(['error' => 'Image recognition failed'], 500);
+            }
+        }
+
+        // Conditionally apply pagination
+        if ($request->name || $request->hasFile('image')) {
+            $products = $productsQuery->get();
+        } else {
+            $products = $productsQuery->paginate(20);
+        }
 
         return view('front.product', compact('products', 'info'));
     }

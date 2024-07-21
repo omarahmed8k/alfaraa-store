@@ -15,6 +15,50 @@
             max-height: 400px;
         }
     }
+
+    .search-image {
+        display: inline-block;
+        position: absolute;
+        left: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+    }
+
+    .search-image input {
+        width: 60px;
+        height: 60px;
+        position: absolute;
+        left: 0px;
+        top: -30px;
+        opacity: 0;
+        cursor: pointer;
+        z-index: 2;
+    }
+
+    .browse-file-img {
+        position: absolute;
+        top: -20px;
+        left: 0;
+        cursor: pointer;
+        z-index: 1;
+    }
+
+    .search-image img {
+        cursor: pointer;
+    }
+
+    .search-image::after {
+    content: 'new';
+    position: absolute;
+    top: 20px;
+    left: 12.5px;
+    background: #46b590;
+    color: #ffffff;
+    padding: 0px 5px;
+    border-radius: 5px;
+    z-index: 99999;
+}
 </style>
 @endsection
 
@@ -34,9 +78,16 @@
         <a href="{{route('front-product')}}" class="hero-button">@Lang('main.shopNow')</a>
     </div>
 
-    <form class="hero-search" action="{{ route('front-product') }}" method="get">
+    <form class="hero-search" action="{{ route('front-product') }}" method="POST" enctype="multipart/form-data">
+        @csrf
         <div class="header-search-box default-search-style d-flex">
-            <input name="name" class="default-search-style-input-box" type="search" required placeholder="@Lang('main.searchBy')">
+            <input name="name" class="default-search-style-input-box" type="search" placeholder="@Lang('main.searchBy')" value="{{ request()->name }}">
+            <div class="search-image">
+                <input type="file" name="image" accept="image/*">
+                <div class="browse-file-img">
+                    <img src="{{asset('assetsfront/images/search-image.png')}}" alt="search" style="width: 40px; height: 40px; margin-left: 10px; margin-right: 10px;">
+                </div>
+            </div>
             <button class="default-search-style-input-btn" type="submit"><i class="icon-search"></i></button>
         </div>
     </form>

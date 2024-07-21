@@ -16,28 +16,26 @@ use RealRashid\SweetAlert\Facades\Alert;
 |
 */
 
-Route::group(['prefix' => LaravelLocalization::setLocale()], function() {
+Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
 
 	Route::get('/', 'App\Http\Controllers\Front\HomeController@index')->name('veiwhome');
 
 	Route::get('/products', 'App\Http\Controllers\Front\ProductController@index')->name('front-product');
+	Route::post('/products', 'App\Http\Controllers\Front\ProductController@index')->name('front-product-search');
 	Route::get('/product/{id}', 'App\Http\Controllers\Front\ProductController@show')->name('front-show-product');
 	Route::get('/faq', 'App\Http\Controllers\Front\QuestionController@index')->name('front-faq');
 	Route::get('/categories', 'App\Http\Controllers\Front\CategoryController@index')->name('front-category');
 	Route::get('/category/{id}', 'App\Http\Controllers\Front\CategoryController@show')->name('front-show-category');
-
 	Route::get('/image-editor', 'App\Http\Controllers\Front\ImageEditorController@index')->name('front-image-editor');
-	
 	Route::get('/contacts', 'App\Http\Controllers\Front\ContatController@index')->name('front-contact');
 	// Route::get('/contact/create', 'App\Http\Controllers\Front\ContatController@create')->name('front-create-contact');
 	Route::post('/contact/store', 'App\Http\Controllers\Front\ContatController@store')->name('front-store-contact');
 	Route::post('/inactive/store', 'App\Http\Controllers\InactiveController@store')->name('front-store-inactive');
 
 	/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-
 });
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
 	Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('veiwproduct');
 	// Route::get('/producty', 'App\Http\Controllers\ProductController@indexy')->name('veiwproducty');
@@ -47,13 +45,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
 	Route::get('/product/destroy/{id}', 'App\Http\Controllers\ProductController@destroy')->name('destroy-product');
 	Route::get('/product/edit/{id}', 'App\Http\Controllers\ProductController@edit')->name('edit-product');
 	Route::put('/product/{id}/update', 'App\Http\Controllers\ProductController@update')->name('update_product');
-
 	Route::get('/product-image/destroy/{id}', 'App\Http\Controllers\ProductImageController@destroy')->name('destroy-product-image');
 
 	Route::get('/categories', 'App\Http\Controllers\CategoryController@index')->name('veiwcategory');
 	Route::get('/category/create', 'App\Http\Controllers\CategoryController@create')->name('createcategory');
 	Route::post('/category/store', 'App\Http\Controllers\CategoryController@store')->name('store-category');
-    Route::get('/category/edit/{id}', 'App\Http\Controllers\CategoryController@edit')->name('edit-category');
+	Route::get('/category/edit/{id}', 'App\Http\Controllers\CategoryController@edit')->name('edit-category');
 	Route::put('/category/{id}/update', 'App\Http\Controllers\CategoryController@update')->name('update_category');
 	Route::get('/category/destroy/{id}', 'App\Http\Controllers\CategoryController@destroy')->name('destroy-category');
 	Route::get('category/{id}', 'App\Http\Controllers\CategoryController@show')->name('show-category');
@@ -99,17 +96,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
 	Route::post('/company/store', 'App\Http\Controllers\CompanyController@store')->name('store-company');
 	Route::get('/company/destroy/{id}', 'App\Http\Controllers\CompanyController@destroy')->name('destroy-company');
 
-    Route::get('/storage-link-fix', function () {
-        Artisan::call('storage:link');
-        echo 'done';
-    });
+	Route::get('/storage-link-fix', function () {
+		Artisan::call('storage:link');
+		echo 'done';
+	});
 
-    Route::get('/clear-cache', function () {
-        Artisan::call('config:clear');
-        Artisan::call('cache:clear');
-        Artisan::call('view:clear');
-        echo 'done';
-    });
+	Route::get('/clear-cache', function () {
+		Artisan::call('config:clear');
+		Artisan::call('cache:clear');
+		Artisan::call('view:clear');
+		echo 'done';
+	});
 });
 
 /*

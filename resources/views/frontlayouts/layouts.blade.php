@@ -111,6 +111,50 @@ $info = \App\Models\Info::first();
             object-fit: contain;
             max-height: 273px;
         }
+
+        .search-image {
+            display: inline-block;
+            position: absolute;
+            left: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .search-image input {
+            width: 60px;
+            height: 60px;
+            position: absolute;
+            left: 0px;
+            top: -30px;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .browse-file-img {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .search-image img {
+            cursor: pointer;
+        }
+
+        .search-image::after {
+            content: 'new';
+            position: absolute;
+            top: 20px;
+            left: 12.5px;
+            background: #46b590;
+            color: #ffffff;
+            padding: 0px 5px;
+            border-radius: 5px;
+            z-index: 99999;
+        }
     </style>
 
     @yield('css')
@@ -264,9 +308,16 @@ $info = \App\Models\Info::first();
             <div class="offcanvas-mobile-menu-wrapper">
                 <!-- Start Mobile Menu User Center -->
                 <div class="mobile-menu-center">
-                    <form action="{{ route('front-product') }}" method="get">
+                    <form class="hero-search" action="{{ route('front-product') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="header-search-box default-search-style d-flex">
-                            <input class="default-search-style-input-box border-around border-right-none" name="name" type="search" placeholder="@Lang('main.Enter your search words')" required>
+                            <input name="name" class="default-search-style-input-box" type="search" placeholder="@Lang('main.searchBy')" value="{{ request()->name }}">
+                            <div class="search-image">
+                                <input type="file" name="image" accept="image/*">
+                                <div class="browse-file-img">
+                                    <img src="{{asset('assetsfront/images/search-image.png')}}" alt="search" style="width: 40px; height: 40px; margin-left: 10px; margin-right: 10px;">
+                                </div>
+                            </div>
                             <button class="default-search-style-input-btn" type="submit"><i class="icon-search"></i></button>
                         </div>
                     </form>
