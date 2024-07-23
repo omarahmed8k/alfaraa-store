@@ -25,7 +25,7 @@ class ProductController extends Controller
         // Handle name search
         if ($request->name) {
             $productsQuery->where(function ($query) use ($request) {
-                $query->where('name_ar', 'LIKE', "%{$request->name}%")
+                $query->orWhere('name_ar', 'LIKE', "%{$request->name}%")
                     ->orWhere('name_en', 'LIKE', "%{$request->name}%")
                     ->orWhere('dese_ar', 'LIKE', "%{$request->name}%")
                     ->orWhere('dese_en', 'LIKE', "%{$request->name}%")
@@ -84,7 +84,13 @@ class ProductController extends Controller
                         if (empty($tag)) {
                             continue;
                         }
-                        $query->orWhere('name_ar', 'LIKE', '%' . $tag . '%');
+                        $query->orWhere('name_ar', 'LIKE', "%{$tag}%")
+                            ->orWhere('name_en', 'LIKE', "%{$tag}%")
+                            ->orWhere('dese_ar', 'LIKE', "%{$tag}%")
+                            ->orWhere('dese_en', 'LIKE', "%{$tag}%")
+                            ->orWhere('nickname_st', 'LIKE', "%{$tag}%")
+                            ->orWhere('nickname_num', 'LIKE', "%{$tag}%")
+                            ->orWhere('nickname_main', 'LIKE', "%{$tag}%");
                     }
                 });
 
@@ -94,7 +100,13 @@ class ProductController extends Controller
                         if (empty($tag)) {
                             continue;
                         }
-                        $query->orWhere('name_en', 'LIKE', '%' . $tag . '%');
+                        $query->orWhere('name_ar', 'LIKE', "%{$tag}%")
+                            ->orWhere('name_en', 'LIKE', "%{$tag}%")
+                            ->orWhere('dese_ar', 'LIKE', "%{$tag}%")
+                            ->orWhere('dese_en', 'LIKE', "%{$tag}%")
+                            ->orWhere('nickname_st', 'LIKE', "%{$tag}%")
+                            ->orWhere('nickname_num', 'LIKE', "%{$tag}%")
+                            ->orWhere('nickname_main', 'LIKE', "%{$tag}%");
                     }
                 });
             } else {
