@@ -18,7 +18,16 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">المنتجات</h5>
-                <a href="{{ route('createproduct') }}"><button type="button" class="btn btn-primary m-b-xs">Add Product</button></a>
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <a href="{{ route('createproduct') }}"><button type="button" class="btn btn-primary m-b-xs">Add Product</button></a>
+
+                    <form action="{{ route('home') }}" method="get" class="d-flex">
+                        <input type="search" name="search" class="form-control" placeholder="Search" value="{{ request()->search }}">
+                        <button type="submit" class="btn btn-primary">Search</button>
+                    </form>
+
+                </div>
                 <div class="table-responsive">
                     <table id="complex-header" class="display" style="width:100%">
                         <thead>
