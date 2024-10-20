@@ -43,7 +43,7 @@ class ProductController extends Controller
 
             // Computer Vision API
             $visionEndpoint = 'https://alfaraasearchbyimage.cognitiveservices.azure.com/vision/v3.1/analyze';
-            $visionSubscriptionKey = '225372099f7f4deaa783a05feaf9ccc9';
+            $visionSubscriptionKey = 'da1c5c99dee546ffa5bccd8b6dac14a3';
 
             $visionResponse = Http::withHeaders([
                 'Ocp-Apim-Subscription-Key' => $visionSubscriptionKey,
@@ -57,7 +57,7 @@ class ProductController extends Controller
 
                 // Translator API
                 $translatorEndpoint = 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=ar';
-                $translatorSubscriptionKey = '14cf171fdf2341eeba1c40f67b7a606c';
+                $translatorSubscriptionKey = '86c2c84a698c413f9ad62bf61818286f';
 
                 $translatorResponse = Http::withHeaders([
                     'Ocp-Apim-Subscription-Key' => $translatorSubscriptionKey,
