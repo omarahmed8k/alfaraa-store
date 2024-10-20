@@ -42,7 +42,7 @@ class ProductController extends Controller
             $imageContent = file_get_contents(storage_path('app/public/' . $imagePath));
 
             // Computer Vision API
-            $visionEndpoint = 'https://alfaraasearchbyimage.cognitiveservices.azure.com/vision/v3.1/analyze';
+            $visionEndpoint = 'https://alfaraa-images.cognitiveservices.azure.com/vision/v3.1/analyze';
             $visionSubscriptionKey = 'da1c5c99dee546ffa5bccd8b6dac14a3';
 
             $visionResponse = Http::withHeaders([
